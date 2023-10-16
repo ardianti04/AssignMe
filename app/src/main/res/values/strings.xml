@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">AssignMe_1.1</string>
+//landing
+    <string name="lbl_assignme">AssignMe</string>
+    <string name="msg_digital_intelli">Digital Intelligence through Digital Learning</string>
+//login
+    <string name="lbl_hi_welcome">Hi, Welcome!</string>
+    <string name="lbl_login">Log in</string>
+    <string name="lbl_email_address">Email address</string>
+    <string name="lbl_email">Email</string>
+    <string name="lbl_your_email">Your email</string>
+    <string name="lbl_password">Password</string>
+    <string name="msg_forgot_password">Forgot password?</string>
+    <string name="lbl_sign_in">Sign In</string>
+    <string name="msg_don_t_have_an">Don\u2019t have an account?  </string>
+//signup
+    <string name="lbl_create_account">Create account</string>
+    <string name="lbl_signup">Sign up</string>
+    <string name="lbl_name">Name</string>
+    <string name="lbl_create_a_password">Create a password</string>
+    <string name="lbl_confirm_password">Confirm password</string>
+    <string name="lbl_sign_up">Sign Up</string>
+    <string name="msg_already_have_an">Already have an account?</string>
+
+
+
+    <string name="waving_hand">wavingHandImage</string>
+    <string name="input_email">Your Email</string>
+    <string name="input_password">Password</string>
+    <string name="hi_welcome">Hi, Welcome!</string>
+</resources>

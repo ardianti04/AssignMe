@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="groupStylewhite">
+        <item name="android:background">@drawable/rectangle_bg_white</item>
+    </style>
+
+    <style name="btnBackRound">
+        <item name="android:background">@drawable/column_bg</item>
+    </style>
+
+    <style name="etRoundedOutline">
+        <item name="android:textSize">@dimen/_16pxh</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:background">@drawable/rectangle_field_input</item>
+    </style>
+
+    <style name="btnSolidRounded">
+        <item name="android:textSize">@dimen/_16sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textFontWeight" tools:targetApi="p">600</item>
+        <item name="android:background">@drawable/rectangle_bg_navy_rad_10</item>
+    </style>
+
+    <style name="btnRoundedOutline">
+        <item name="android:textSize">@dimen/_16sp</item>
+        <item name="android:textColor">@color/black_900</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textFontWeight" tools:targetApi="p">600</item>
+        <item name="android:background">@drawable/rectangle_border_gray_600_radius_10</item>
+    </style>
+
+
+    <style name="btnSolidRounded_1">
+        <item name="android:textSize">@dimen/_16pxh</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textFontWeight" tools:targetApi="p">1000</item>
+        <item name="android:background">@drawable/rectangle_bg_white_rounded</item>
+    </style>
+
+    <style name="passwordToggleColor" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="passwordToggleTint">@color/white</item>
+    </style>
+
+
+    <style name="txtPoppinsbold30">
+        <item name="android:textSize">@dimen/_34pxh</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+
+    <style name="txtInterregular14">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/bluegray</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+
+    <style name="txtInterregular14bold">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/inter</item>
+    </style>
+
+    <style name="txtInterregular17">
+        <item name="android:textSize">@dimen/_17sp</item>
+        <item name="android:textColor">@color/black_900_b2</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+
+    <style name="txtPoppinsbold32">
+        <item name="android:textSize">@dimen/_32pxh</item>
+        <item name="android:textColor">@color/navy</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+
+    <style name="txtPoppinsbold32_1">
+    <item name="android:textSize">@dimen/_32pxh</item>
+    <item name="android:textColor">@color/white</item>
+    <item name="android:fontFamily">@font/poppins</item>
+    <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+
+    <style name="HintTextAppearance">
+
+        <item name="android:background">#FFFFFF</item> <!-- Latar belakang putih ketika aktif -->
+    </style>
+
+
+
+</resources>
