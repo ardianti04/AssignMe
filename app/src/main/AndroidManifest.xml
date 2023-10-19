@@ -13,6 +13,12 @@
         android:theme="@style/Theme.AssignMe_11"
         tools:targetApi="31">
         <activity
+            android:name=".FP_4_status"
+            android:exported="false" />
+        <activity
+            android:name=".FP_3_resetpass"
+            android:exported="false" />
+        <activity
             android:name=".FP_2_otp"
             android:exported="false" />
         <activity
