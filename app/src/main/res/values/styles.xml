@@ -17,6 +17,14 @@
         <item name="android:background">@drawable/rectangle_field_input</item>
     </style>
 
+    <style name="etRoundedOutlineBlack">
+        <item name="android:textSize">@dimen/_16sp</item>
+        <item name="android:textColor">@color/black_900</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:background">@drawable/rectangle_border_bluegray_100_radius_10</item>
+    </style>
+
     <style name="btnSolidRounded">
         <item name="android:textSize">@dimen/_16sp</item>
         <item name="android:textColor">@color/white</item>
@@ -62,6 +70,27 @@
         <item name="android:textFontWeight" tools:targetApi="p">400</item>
     </style>
 
+    <style name="txtInterregular14_1">
+        <item name="android:textSize">@dimen/_14pxh</item>
+        <item name="android:textColor">@color/black_900</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+
+    <style name="txtInterregular14_1Bold">
+        <item name="android:textSize">@dimen/_14pxh</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black_900</item>
+        <item name="android:fontFamily">@font/inter</item>
+    </style>
+
+    <style name="txtInterregular14black">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black_900</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+
     <style name="txtInterregular14bold">
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
@@ -90,11 +119,21 @@
     <item name="android:textFontWeight" tools:targetApi="p">700</item>
     </style>
 
+    <style name="txtPoppinsbold28">
+        <item name="android:textSize">@dimen/_28pxh</item>
+        <item name="android:textColor">@color/black_900</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+
     <style name="HintTextAppearance">
 
         <item name="android:background">#FFFFFF</item> <!-- Latar belakang putih ketika aktif -->
     </style>
 
+    <style name="groupStyleBackgroundWhite">
+        <item name="android:background">@drawable/background_fp</item>
+    </style>
 
 
 </resources>
