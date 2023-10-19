@@ -19,51 +19,28 @@ import android.view.Gravity
 class SignInActivity : AppCompatActivity() {
     private lateinit var txtSignUp : TextView
     private lateinit var txtLogin : TextView
+    private lateinit var btnSendCode : Button
 
-    lateinit var popupBtn: TextView
+    lateinit var txtForgotPass: TextView
     lateinit var mDialog: Dialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
 
-        popupBtn = findViewById(R.id.txtforgotPassword)
-        mDialog = Dialog(this)
-        val pressedColor = ContextCompat.getColor(this, R.color.black_900_7f)
-
-        popupBtn.setOnClickListener{
-            popupBtn.setTextColor(ContextCompat.getColorStateList(this, R.color.login_register))
-            val dialogView = layoutInflater.inflate(R.layout.activity_fp1_enter_email, null)
-            val window = mDialog.window
-            window?.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, R.color.black_semi_transparent)))
-            mDialog.setContentView(dialogView)
-
-            val imageViewCloseButton = dialogView.findViewById<ImageView>(R.id.closeButtonFpEmail)
-            imageViewCloseButton.setOnClickListener {
-                imageViewCloseButton.setColorFilter(pressedColor)
-                mDialog.dismiss()
-            }
-
-            txtLogin = dialogView.findViewById(R.id.txtLoginInFP)
-            txtLogin.setTextColor(ContextCompat.getColorStateList(this, R.color.login_fp_email))
-            txtLogin.setOnClickListener {
-                mDialog.dismiss()
-            }
-
-            val layoutParams = WindowManager.LayoutParams()
-            layoutParams.copyFrom(window?.attributes)
-            layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT
-            layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT
-            layoutParams.gravity = Gravity.CENTER
-            window?.attributes = layoutParams
-            mDialog.setCanceledOnTouchOutside(true)
-            mDialog.show()
+        txtForgotPass = findViewById(R.id.txtforgotPassword)
+        txtForgotPass.setTextColor(ContextCompat.getColorStateList(this, R.color.login_register))
+        txtForgotPass.setOnClickListener{
+            val intent = Intent( this@SignInActivity, FP_1_enter_email::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
         }
 
-        val imageView = findViewById<ImageView>(R.id.backButtonImageLogin)
+        val pressedColor = ContextCompat.getColor(this, R.color.black_900_7f)
+        val backBtn = findViewById<ImageView>(R.id.backButtonImageLogin)
 
-        imageView.setOnClickListener {
-            imageView.setColorFilter(pressedColor)
+        backBtn.setOnClickListener {
+            backBtn.setColorFilter(pressedColor)
             val intent = Intent( this@SignInActivity, LandingActivity::class.java)
             startActivity(intent)
         }
