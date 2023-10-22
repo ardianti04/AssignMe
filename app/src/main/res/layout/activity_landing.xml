@@ -82,7 +82,7 @@
             android:singleLine="true"
             android:text="@string/lbl_create_account"
             android:textAllCaps="false"
-            style="@style/btnRoundedOutline"/>
+            style="@style/etRoundedOutlineBlack"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
