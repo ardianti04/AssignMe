@@ -9,6 +9,8 @@ class LandingActivity : AppCompatActivity() {
     private lateinit var btnSignIn : Button
     private lateinit var btnCreateAccount : Button
 
+    //test commit
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing);
