@@ -53,7 +53,7 @@
             android:layout_width="138dp"
             android:layout_height="48dp"
             android:background="@drawable/rectangle_bg_navy_rounded"
-            android:text="Gabung Kelas"
+            android:text="Join Class"
 
             android:textColor="#E0E2EA"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -67,7 +67,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
             android:gravity="center"
-            android:text="Gabung atau buat kelasmu untuk \nmemulai aktivitas"
+            android:text="Join or create your class to start an activity"
             android:textColor="@color/gray_600"
             android:textSize="20sp"
             android:textStyle="normal"
@@ -79,11 +79,11 @@
 
         <Button
             android:id="@+id/btnBuatKelas"
-            android:layout_width="120dp"
+            android:layout_width="123dp"
             android:layout_height="48dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/rectangle_bg_navy_rounded"
-            android:text="Buat Kelas"
+            android:text="Creat Class"
             android:textColor="#E0E2EA"
             app:layout_constraintEnd_toEndOf="@+id/textView2"
             app:layout_constraintHorizontal_bias="0.055"

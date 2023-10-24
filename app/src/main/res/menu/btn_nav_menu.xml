@@ -3,13 +3,13 @@
     <item android:title="Home"
         android:id="@+id/bottom_home"
         android:icon="@drawable/ic_home"/>
-    <item android:title="Kelas"
+    <item android:title="Class"
         android:id="@+id/bottom_kelas"
         android:icon="@drawable/ic_kelas"/>
     <item android:title="Timeline"
         android:id="@+id/bottom_Timeline"
         android:icon="@drawable/ic_timeline"/>
-    <item android:title="Pengaturan"
+    <item android:title="Setting"
         android:id="@+id/bottom_Pengaturan"
         android:icon="@drawable/ic_setting"/>
 </menu>
