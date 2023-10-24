@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape android:shape="rectangle" xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/navy"/><!-- Auto layout, variables, and unit scale are not yet supported -->
-    <View
-        android:id="@+id/ellipse_1"
-        android:layout_width="606dp"
-        android:layout_height="690dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="-123dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="316dp"
-        android:background="#363F71"
-        />
-    <corners android:radius="@dimen/_40pxh"/>
+    <solid android:color="@color/navy" />
+    <corners android:radius="@dimen/_40pxh" />
 </shape>

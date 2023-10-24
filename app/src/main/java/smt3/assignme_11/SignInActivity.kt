@@ -20,6 +20,7 @@ class SignInActivity : AppCompatActivity() {
     private lateinit var txtSignUp : TextView
     private lateinit var txtLogin : TextView
     private lateinit var btnSendCode : Button
+    private lateinit var btnSignIn :Button
 
     lateinit var txtForgotPass: TextView
     lateinit var mDialog: Dialog
@@ -50,6 +51,11 @@ class SignInActivity : AppCompatActivity() {
         txtSignUp.setOnClickListener {
             val intent = Intent( this@SignInActivity, SignUpActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
+        }
+        btnSignIn = findViewById(R.id.btnSignIn)
+        btnSignIn.setOnClickListener{
+            val intent=Intent(this@SignInActivity,Dashboard_Awal::class.java)
             startActivity(intent)
         }
     }

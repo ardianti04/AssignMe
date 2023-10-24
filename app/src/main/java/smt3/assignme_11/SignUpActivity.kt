@@ -11,6 +11,7 @@ import android.text.style.ClickableSpan
 import android.text.style.StyleSpan
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +21,8 @@ import smt3.assignme_11.SignInActivity
 class SignUpActivity : AppCompatActivity() {
     private lateinit var btnBackLogin : ImageView
     private lateinit var txtSignIn : TextView
+
+    
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,5 +51,9 @@ class SignUpActivity : AppCompatActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
         }
+
+
+
+
     }
 }
