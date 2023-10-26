@@ -11,6 +11,12 @@
     <color name="bluegray_100">#d8dadc</color>
     <color name="blueonclick">#5564B5</color>
     <color name="black_semi_transparent">#4D000000</color>
+    <color name="gray_400">#b2b2b2</color>
+    <color name="gray_menu">#969393</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="selected_item_background_color">#FF4081</color> <!-- Ganti dengan warna yang Anda inginkan -->
+
 
 
 
