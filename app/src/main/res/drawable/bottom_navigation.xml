@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Bagian atas (rectangle) -->
+    <item android:bottom="0dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white" /> <!-- Ganti warna latar belakang sesuai keinginan -->
+            <corners android:radius="25dp" />
+            <stroke android:color="@color/bluegray_100" android:width="1dp"/>
+        </shape>
+    </item>
+    <!-- Bagian bawah (elips) -->
+    <item android:top="40dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white" /> <!-- Ganti warna latar belakang sesuai keinginan -->
+            <stroke android:color="@color/bluegray_100" /><!-- Sesuaikan radius untuk membuat sudut elips -->
+        </shape>
+    </item>
+</layer-list>

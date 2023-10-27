@@ -37,6 +37,9 @@
     <string name="lbl_reset_pass_desc">Please type something you\u2019ll remember</string>
     <string name="lbl_forgot_pass_desc">Don\u2019t worry! It happens. Please enter the email associated with your account</string>
 
+    <string name="lbl_hello">Hello,</string>
+    <string name="lbl_search">Search</string>
+
 
     <string name="waving_hand">wavingHandImage</string>
     <string name="input_email">Your Email</string>
