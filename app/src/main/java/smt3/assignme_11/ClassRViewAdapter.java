@@ -1,6 +1,7 @@
 package smt3.assignme_11;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,6 +51,10 @@ public class ClassRViewAdapter extends RecyclerView.Adapter<ClassRViewAdapter.Vi
             @Override
             public void onClick(View view) {
                 Toast.makeText(mContext, kelas.get(holder.getBindingAdapterPosition()).getNama_kelas()+" Selected", Toast.LENGTH_SHORT).show();
+
+
+                Intent intent = new Intent(mContext, Kelas_Murid.class);
+                mContext.startActivity(intent);
             }
         });
     }
