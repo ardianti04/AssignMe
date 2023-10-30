@@ -18,7 +18,7 @@ public class All_class_RecView extends AppCompatActivity {
     private ClassRViewAdapter adapter;
     private ImageButton btnTambah;
     private AlertDialog dialog;
-    private Button btnCencel,btnJoin;
+    private Button btnCancel,btnJoin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,17 +29,10 @@ public class All_class_RecView extends AppCompatActivity {
         btnTambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                JoinClassDialog joinClassDialog = new JoinClassDialog(All_class_RecView.this);
-                joinClassDialog.showJoinClassDialog();
+                Intent intent = new Intent(All_class_RecView.this, JoinClassActivity.class);
+                startActivity(intent);
             }
         });
-
-
-
-
-
-
-
 
         adapter=new ClassRViewAdapter(this);
         classRecView=findViewById(R.id.classRecView);

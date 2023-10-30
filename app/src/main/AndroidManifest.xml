@@ -18,7 +18,7 @@
             android:name=".Kelas_Murid"
             android:exported="false" />
         <activity
-            android:name=".JoinCDialog"
+            android:name=".JoinClassActivity"
             android:exported="false" />
         <activity
             android:name=".All_class_RecView"
