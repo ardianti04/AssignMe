@@ -6,6 +6,7 @@
     <color name="white_field">#7fffffff</color>
     <color name="black_900_b2">#b2000000</color>
     <color name="black_900">#000000</color>
+    <color name="black_800">#80000000</color>
     <color name="gray_600">#737373</color>
     <color name="black_900_7f">#7f000000</color>
     <color name="bluegray_100">#d8dadc</color>
