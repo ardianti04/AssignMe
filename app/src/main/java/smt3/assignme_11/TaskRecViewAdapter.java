@@ -50,8 +50,8 @@ public class TaskRecViewAdapter extends RecyclerView.Adapter<TaskRecViewAdapter.
                 Toast.makeText(mContext, tugas.get(holder.getBindingAdapterPosition()).getNama_mapel()+" Selected", Toast.LENGTH_SHORT).show();
 
 
-                Intent intent = new Intent(mContext, Kelas_Murid.class);
-                mContext.startActivity(intent);
+//                Intent intent = new Intent(mContext, Kelas_Murid.class);
+//                mContext.startActivity(intent);
             }
         });
 

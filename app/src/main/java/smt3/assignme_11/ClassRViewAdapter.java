@@ -53,8 +53,8 @@ public class ClassRViewAdapter extends RecyclerView.Adapter<ClassRViewAdapter.Vi
                 Toast.makeText(mContext, kelas.get(holder.getBindingAdapterPosition()).getNama_kelas()+" Selected", Toast.LENGTH_SHORT).show();
 
 
-                Intent intent = new Intent(mContext, Kelas_Murid.class);
-                mContext.startActivity(intent);
+//                Intent intent = new Intent(mContext, Kelas_Murid.class);
+//                mContext.startActivity(intent);
             }
         });
     }
