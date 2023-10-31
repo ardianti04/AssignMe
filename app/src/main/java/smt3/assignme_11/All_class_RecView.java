@@ -40,8 +40,8 @@ public class All_class_RecView extends AppCompatActivity {
                     Intent homeIntent=new Intent(All_class_RecView.this,All_class_RecView.class);
                     startActivity(homeIntent);
                 }else if(item.getItemId()==R.id.botton_Timeline){
-//                    Intent timelineIntent=new Intent(All_class_RecView.this, FragmentDashboard.class);
-//                    startActivity(timelineIntent);
+                    Intent timelineIntent=new Intent(All_class_RecView.this, All_Task_RecView.class);
+                    startActivity(timelineIntent);
                 } else if (item.getItemId()==R.id.botton_achives) {
 
                 } else if (item.getItemId()==R.id.botton_Pengaturan) {
@@ -61,6 +61,7 @@ public class All_class_RecView extends AppCompatActivity {
                 joinClassDialog.showJoinClassDialog();
             }
         });
+
 
 
 

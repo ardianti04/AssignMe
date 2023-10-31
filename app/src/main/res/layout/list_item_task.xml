@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="340dp"
+    android:layout_height="120dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="10dp"
+    android:layout_marginTop="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txtDeskrisiTugas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Tugas Bab 1"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:layout_below="@+id/txtNamaMapel"
+            android:layout_toRightOf="@id/imgKelas"
+            android:layout_marginLeft="20dp"/>
+        <TextView
+            android:id="@+id/txtTglBerakhir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Jul 5,2023"
+            android:textColor="@color/gray_menu"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_below="@+id/txtDeskrisiTugas"
+            android:layout_toRightOf="@id/imgKelas"
+            android:layout_toEndOf="@+id/imgTglBerakhir" />
+
+        <TextView
+            android:id="@+id/txtNamaMapel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Matematika"
+            android:textColor="@color/blue_5"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_toRightOf="@+id/imgKelas"
+            android:layout_marginLeft="20dp"/>
+
+        <ImageView
+            android:id="@+id/imgKelas"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            app:srcCompat="@drawable/ic_launcher_background"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp" />
+        <ImageView
+            android:id="@+id/imgTglBerakhir"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            app:srcCompat="@drawable/ic_jam"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/txtDeskrisiTugas"
+            android:layout_marginStart="75dp"/>
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

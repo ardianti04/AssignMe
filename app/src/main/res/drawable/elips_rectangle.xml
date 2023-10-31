@@ -10,7 +10,7 @@
     <item android:top="50dp">
         <shape android:shape="rectangle">
             <solid android:color="#363F71" /> <!-- Ganti warna latar belakang sesuai keinginan -->
-            <corners android:radius="25dp" /> <!-- Sesuaikan radius untuk membuat sudut elips -->
+            <corners android:radius="30dp" /> <!-- Sesuaikan radius untuk membuat sudut elips -->
         </shape>
     </item>
 </layer-list>
