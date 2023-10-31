@@ -6,6 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".All_Task_RecView">
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/viewPagerTimeline"
+        android:layout_below="@+id/tabLayoutTimeline"
+        />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayoutTimeline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/topCLayout"
+        android:layout_marginTop="10dp"
+        >
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TO-DO"
+            android:id="@+id/todo"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Completed"
+            android:id="@+id/completed" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Overdue"
+            android:id="@+id/overdue"/>
+    </com.google.android.material.tabs.TabLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topCLayout"
         android:layout_width="match_parent"
@@ -44,6 +78,7 @@
         app:itemIconTint="@color/navigation_menu"
         app:itemTextColor="@color/navigation_menu"
         app:menu="@menu/btn_nav_menu"
+        app:labelVisibilityMode="labeled"
         app:itemRippleColor="@color/transparent"/>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -54,7 +89,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topCLayout"
-        app:layout_constraintVertical_bias="0.105" />
+        app:layout_constraintTop_toBottomOf="@+id/tabLayoutTimeline"
+        app:layout_constraintVertical_bias="0.122" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
