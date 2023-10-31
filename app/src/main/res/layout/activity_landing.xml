@@ -51,38 +51,50 @@
                 android:layout_marginBottom="10dp"
                 android:text="@string/msg_digital_intelli"/>
         </LinearLayout>
-        <androidx.appcompat.widget.AppCompatButton
-            android:ellipsize="end"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:id="@+id/btnSignIn"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="120dp"
-            android:layout_width="350dp"
-            android:paddingBottom="18dp"
-            android:paddingTop="18dp"
-            android:singleLine="true"
-            android:text="@string/lbl_sign_in"
-            android:textAllCaps="false"
-            style="@style/btnSolidRounded"/>
-        <androidx.appcompat.widget.AppCompatButton
-            android:ellipsize="end"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:id="@+id/btnCreateAccount"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="14dp"
-            android:layout_width="350dp"
-            android:paddingBottom="18dp"
-            android:paddingTop="18dp"
-            android:singleLine="true"
-            android:text="@string/lbl_create_account"
-            android:textAllCaps="false"
-            style="@style/etRoundedOutlineBlack"/>
+
+        <LinearLayout
+            android:id="@+id/linearButtonLanding"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="48dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:orientation="vertical">
+            <androidx.appcompat.widget.AppCompatButton
+                android:ellipsize="end"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:id="@+id/btnSignIn"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="120dp"
+                android:layout_width="350dp"
+                android:paddingBottom="18dp"
+                android:paddingTop="18dp"
+                android:singleLine="true"
+                android:text="@string/lbl_sign_in"
+                android:textAllCaps="false"
+                style="@style/btnSolidRounded"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:ellipsize="end"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:id="@+id/btnCreateAccount"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="14dp"
+                android:layout_width="350dp"
+                android:paddingBottom="18dp"
+                android:paddingTop="18dp"
+                android:singleLine="true"
+                android:text="@string/lbl_create_account"
+                android:textAllCaps="false"
+                style="@style/etRoundedOutlineBlack"/>
+        </LinearLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

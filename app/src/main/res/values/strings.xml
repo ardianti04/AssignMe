@@ -39,6 +39,12 @@
 
     <string name="lbl_hello">Hello,</string>
     <string name="lbl_search">Search</string>
+    <string name="lbl_join_class">Join Class</string>
+    <string name="lbl_join">Join</string>
+    <string name="msg_ask_the_teacher">Ask the teacher for the class code,&#13;
+then enter the code below.</string>
+    <string name="lbl_cancel">Cancel</string>
+    <string name="lbl_class_code">Class Code</string>
 
 
     <string name="waving_hand">wavingHandImage</string>
