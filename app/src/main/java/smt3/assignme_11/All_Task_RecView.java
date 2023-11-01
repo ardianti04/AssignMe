@@ -68,7 +68,8 @@ public class All_Task_RecView extends AppCompatActivity {
                     Intent timelineIntent=new Intent(All_Task_RecView.this, All_Task_RecView.class);
                     startActivity(timelineIntent);
                 } else if (item.getItemId()==R.id.botton_achives) {
-
+                    Intent timelineIntent=new Intent(All_Task_RecView.this, Archive.class);
+                    startActivity(timelineIntent);
                 } else if (item.getItemId()==R.id.botton_Pengaturan) {
 
                 }
