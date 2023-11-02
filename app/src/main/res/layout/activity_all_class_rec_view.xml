@@ -54,7 +54,7 @@
                         style="@style/txtPoppinsbold15"/>
                 </LinearLayout>
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/imgProfil"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginStart="75dp"

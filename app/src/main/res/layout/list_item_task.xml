@@ -36,7 +36,7 @@
             android:textStyle="bold"
             android:layout_below="@+id/txtDeskrisiTugas"
             android:layout_toRightOf="@id/imgKelas"
-            android:layout_toEndOf="@+id/imgTglBerakhir" />
+            android:layout_toEndOf="@+id/imgEditProfile" />
 
         <TextView
             android:id="@+id/txtNamaMapel"
@@ -58,7 +58,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp" />
         <ImageView
-            android:id="@+id/imgTglBerakhir"
+            android:id="@+id/imgEditProfile"
             android:layout_width="30dp"
             android:layout_height="20dp"
             app:srcCompat="@drawable/ic_jam"

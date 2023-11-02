@@ -1,6 +1,6 @@
 package smt3.assignme_11;
 
-public class Kelas {
+public class Kelas  {
     private int id_kelas;
     private String nama_kelas;
     private String kode_kelas;

@@ -1,7 +1,6 @@
 package smt3.assignme_11;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -75,7 +74,7 @@ public class TaskRecViewAdapter extends RecyclerView.Adapter<TaskRecViewAdapter.
             super(itemView);
             parent=itemView.findViewById(R.id.parent);
             imgKelas=itemView.findViewById(R.id.imgKelas);
-            imgTglBerakhir=itemView.findViewById(R.id.imgTglBerakhir);
+            imgTglBerakhir=itemView.findViewById(R.id.imgEditProfile);
             txtNamaMapel=itemView.findViewById(R.id.txtNamaMapel);
             txtDeskripsiTugas=itemView.findViewById(R.id.txtDeskrisiTugas);
             txtTglBerakhir=itemView.findViewById(R.id.txtTglBerakhir);

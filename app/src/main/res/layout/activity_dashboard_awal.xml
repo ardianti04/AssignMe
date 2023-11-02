@@ -132,7 +132,7 @@
 
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/imgProfil"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="132dp"

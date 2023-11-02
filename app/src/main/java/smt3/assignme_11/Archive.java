@@ -32,6 +32,8 @@ public class Archive extends AppCompatActivity {
                     Intent timelineIntent=new Intent(Archive.this, Archive.class);
                     startActivity(timelineIntent);
                 } else if (item.getItemId()==R.id.botton_Pengaturan) {
+                    Intent timelineIntent=new Intent(Archive.this, Settings.class);
+                    startActivity(timelineIntent);
 
                 }
                 return false;

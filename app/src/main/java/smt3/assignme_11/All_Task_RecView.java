@@ -1,7 +1,5 @@
 package smt3.assignme_11;
 
-import static smt3.assignme_11.R.id.tabLayoutTimeline;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,8 +21,8 @@ public class All_Task_RecView extends AppCompatActivity {
     private RecyclerView taskRecView;
     private TaskRecViewAdapter adapter;
     private BottomNavigationView bottomNavigationView;
-    private TabLayout tabLayoutTimeline;
-    private ViewPager2 viewPagerTimeline;
+    private TabLayout tabLayout;
+    private ViewPager2 viewPager;
     private Button todo,completed,overdue;
 
 
@@ -33,10 +31,10 @@ public class All_Task_RecView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_task_rec_view);
 
-        tabLayoutTimeline = findViewById(R.id.tabLayoutTimeline);
-        viewPagerTimeline = findViewById(R.id.viewPagerTimeline);
+        tabLayout = findViewById(R.id.tabLayout);
+        viewPager = findViewById(R.id.viewPager);
 
-        tabLayoutTimeline.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if(tab.getPosition()==0){
@@ -71,7 +69,8 @@ public class All_Task_RecView extends AppCompatActivity {
                     Intent timelineIntent=new Intent(All_Task_RecView.this, Archive.class);
                     startActivity(timelineIntent);
                 } else if (item.getItemId()==R.id.botton_Pengaturan) {
-
+                    Intent timelineIntent=new Intent(All_Task_RecView.this, Settings.class);
+                    startActivity(timelineIntent);
                 }
                 return false;
             }

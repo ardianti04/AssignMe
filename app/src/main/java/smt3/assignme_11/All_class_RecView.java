@@ -44,7 +44,8 @@ public class All_class_RecView extends AppCompatActivity {
                     Intent timelineIntent=new Intent(All_class_RecView.this, Archive.class);
                     startActivity(timelineIntent);
                 } else if (item.getItemId()==R.id.botton_Pengaturan) {
-
+                    Intent timelineIntent=new Intent(All_class_RecView.this, Settings.class);
+                    startActivity(timelineIntent);
                 }
                 return false;
             }
@@ -55,12 +56,10 @@ public class All_class_RecView extends AppCompatActivity {
         btnTambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(All_class_RecView.this, JoinClassActivity.class);
+                startActivity(intent);
             }
         });
-
-
-
 
 
 
