@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment_4_setting">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="136dp"
+        app:layout_constraintTop_toBottomOf="@+id/topCLayout"
+        tools:layout_editor_absoluteX="0dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="340dp"
+            android:layout_height="600dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/rectangle_border_gray_600_radius_10"
+            app:cardCornerRadius="30sp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtNama"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Ardianti Simanjuntak"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/imgProfil"
+                    app:layout_constraintStart_toStartOf="@+id/imgProfil"
+                    app:layout_constraintTop_toBottomOf="@+id/imgProfil" />
+
+
+
+                <ImageView
+                    android:id="@+id/imgProfil"
+                    android:layout_width="80dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/profile3d"
+                    android:contentDescription="profil"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.503"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/rounded_image" />
+
+                <TextView
+                    android:id="@+id/txtEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="ardianti@gmail.com"
+                    android:textColor="#706C6C"
+                    android:textStyle="bold|italic"
+                    app:layout_constraintEnd_toEndOf="@+id/txtNama"
+                    app:layout_constraintStart_toStartOf="@+id/txtNama"
+                    app:layout_constraintTop_toBottomOf="@+id/txtNama" />
+
+
+                <ImageView
+                    android:id="@+id/btnMasukEditProfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="112dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_masuk"
+                    app:layout_constraintBottom_toBottomOf="@+id/txthHelpCenter"
+                    app:layout_constraintStart_toEndOf="@+id/txthHelpCenter"
+                    app:layout_constraintTop_toTopOf="@+id/txthHelpCenter"
+                    app:layout_constraintVertical_bias="0.8" />
+
+                <ImageView
+                    android:id="@+id/btnMasukChangePassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="72dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_masuk"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtChangePassword"
+                    app:layout_constraintStart_toEndOf="@+id/txtChangePassword"
+                    app:layout_constraintTop_toTopOf="@+id/txtChangePassword"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <ImageView
+                    android:id="@+id/btnMasukHelpCenter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="116dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_masuk"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtEditProfile"
+                    app:layout_constraintStart_toEndOf="@+id/txtEditProfile"
+                    app:layout_constraintTop_toTopOf="@+id/txtEditProfile"
+                    app:layout_constraintVertical_bias="0.8" />
+
+                <ImageView
+                    android:id="@+id/imgUbahImg"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="48dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.329"
+                    app:layout_constraintStart_toStartOf="@+id/imgProfil"
+                    app:layout_constraintTop_toTopOf="@+id/imgProfil"
+                    app:srcCompat="@drawable/ic_image" />
+
+                <ImageView
+                    android:id="@+id/imgEditProfile"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginTop="48dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtEmail"
+                    app:srcCompat="@drawable/ic_edit_profile" />
+
+                <ImageView
+                    android:id="@+id/imgHelpCenter"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginTop="28dp"
+                    app:layout_constraintEnd_toEndOf="@+id/imgChangePassword"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/imgChangePassword"
+                    app:layout_constraintTop_toBottomOf="@+id/imgChangePassword"
+                    app:srcCompat="@drawable/ic_help_center" />
+
+                <ImageView
+                    android:id="@+id/imgChangePassword"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="28dp"
+                    app:layout_constraintEnd_toEndOf="@+id/imgEditProfile"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/imgEditProfile"
+                    app:layout_constraintTop_toBottomOf="@+id/imgEditProfile"
+                    app:srcCompat="@drawable/ic_change_password" />
+
+                <TextView
+                    android:id="@+id/txtEditProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:text="Edit Profile"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgEditProfile"
+                    app:layout_constraintStart_toEndOf="@+id/imgEditProfile"
+                    app:layout_constraintTop_toTopOf="@+id/imgEditProfile"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <TextView
+                    android:id="@+id/txtChangePassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:text="Change Password"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgChangePassword"
+                    app:layout_constraintStart_toEndOf="@+id/imgChangePassword"
+                    app:layout_constraintTop_toTopOf="@+id/imgChangePassword"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <TextView
+                    android:id="@+id/txthHelpCenter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:text="Help Center"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgHelpCenter"
+                    app:layout_constraintStart_toEndOf="@+id/imgHelpCenter"
+                    app:layout_constraintTop_toTopOf="@+id/imgHelpCenter"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnLogOut"
+                    android:layout_width="140dp"
+                    android:layout_height="45dp"
+                    android:layout_marginBottom="80dp"
+                    android:background="@drawable/rectangle_bg_navy_rounded"
+                    android:text="Log Out"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.545"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topCLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/elips_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/txtSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.229"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
