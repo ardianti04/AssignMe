@@ -34,7 +34,7 @@
                 android:id="@+id/backButtonJoinClass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/baseline_arrow_back_ios_new_24"
+                android:src="@drawable/baseline_arrow_back_ios_black_new_24"
                 android:scaleType="fitXY"/>
         </LinearLayout>
 
