@@ -5,16 +5,20 @@ plugins {
 
 android {
     namespace = "smt3.assignme_11"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "smt3.assignme_11"
         minSdk = 28
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    viewBinding {
+        enable = true
     }
 
     buildTypes {
@@ -38,6 +42,8 @@ android {
 dependencies {
     //untuk mengambil gambar dari berbagai sumber
     implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.16.0")
 
     implementation ("androidx.recyclerview:recyclerview:1.3.2")
@@ -51,4 +57,6 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     //pin otp dependency.
     implementation("com.github.GoodieBag:Pinview:v1.5")
+    //bottom navigation
+    implementation("com.github.ibrahimsn98:SmoothBottomBar:1.7.9")
 }

@@ -55,7 +55,7 @@ class SignInActivity : AppCompatActivity() {
         }
         btnSignIn = findViewById(R.id.btnSignIn)
         btnSignIn.setOnClickListener{
-            val intent=Intent(this@SignInActivity,All_class_RecView::class.java)
+            val intent=Intent(this@SignInActivity,Main_Activity::class.java)
             startActivity(intent)
         }
     }

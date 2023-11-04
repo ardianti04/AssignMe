@@ -17,12 +17,12 @@ class JoinClassActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join_class)
 
-        // Inisialisasi komponen dalam dialog
+        // Inisialisasi komponen
         val pressedColor = ContextCompat.getColor(this, R.color.black_900_7f)
         val btnBack = findViewById<ImageView>(R.id.backButtonJoinClass)
         btnBack.setOnClickListener(){
             btnBack.setColorFilter(pressedColor)
-            val intent = Intent( this@JoinClassActivity, All_class_RecView::class.java)
+            val intent = Intent( this@JoinClassActivity, Main_Activity::class.java)
             startActivity(intent)
         }
 
@@ -30,7 +30,7 @@ class JoinClassActivity : AppCompatActivity() {
         // Mengatur tindakan saat tombol "Join" diklik
         btnJoin = findViewById(R.id.btnJoin);
         btnJoin.setOnClickListener { // Arahkan pengguna ke halaman login (SignInActivity)
-            val intent = Intent(this@JoinClassActivity, All_class_RecView::class.java)
+            val intent = Intent(this@JoinClassActivity, Main_Activity::class.java)
             startActivity(intent)
         }
             // Lakukan tindakan bergabung dengan kelas di sini

@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Main_Activity">
 
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <FrameLayout
+        android:id="@+id/main_fragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+
+    <me.ibrahimsn.lib.SmoothBottomBar
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/rectangle_border_bluegray_100_radius_10"
+        style="@style/etRoundedOutline"
         app:menu="@menu/btn_nav_menu"
-        android:layout_alignParentBottom="true"/>
-</RelativeLayout>
+        app:indicatorColor="@color/navy"
+        app:iconTintActive="@color/white"
+        app:iconTint="@color/gray_menu"
+        app:textColor="@color/white"
+        app:duration="@integer/material_motion_duration_long_1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:contentDescription="@string/lbl_descBottomBar"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

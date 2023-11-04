@@ -63,6 +63,7 @@ public class TaskRecViewAdapter extends RecyclerView.Adapter<TaskRecViewAdapter.
 
     public void setTugas(ArrayList<Tugas> tugas) {
         this.tugas = tugas;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
