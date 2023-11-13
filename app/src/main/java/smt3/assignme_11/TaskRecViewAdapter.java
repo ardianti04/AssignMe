@@ -1,6 +1,7 @@
 package smt3.assignme_11;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+
+
 
 public class TaskRecViewAdapter extends RecyclerView.Adapter<TaskRecViewAdapter.ViewHolder>{
     private static final String TAG = "TaskRecViewAdapter";
@@ -49,8 +52,8 @@ public class TaskRecViewAdapter extends RecyclerView.Adapter<TaskRecViewAdapter.
                 Toast.makeText(mContext, tugas.get(holder.getBindingAdapterPosition()).getNama_mapel()+" Selected", Toast.LENGTH_SHORT).show();
 
 
-//                Intent intent = new Intent(mContext, Kelas_Murid.class);
-//                mContext.startActivity(intent);
+                Intent intent = new Intent(mContext, Detail_Tugas.class);
+                mContext.startActivity(intent);
             }
         });
 
