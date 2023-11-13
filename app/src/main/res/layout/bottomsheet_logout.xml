@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_bg">
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="5dp"
+        android:src="@drawable/round_remove_24"
+        android:layout_gravity="center|top"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/txtForgotpassword"
+        style="@style/txtPoppinsbold28"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="@string/lbl_logout_account" />
+
+    <TextView
+        android:id="@+id/txtDescEmailFP"
+        style="@style/txtInterregular14b2"
+        android:gravity="center"
+        android:layout_gravity="start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:ellipsize="end"
+        android:singleLine="false"
+        android:text="@string/lbl_are_you_sure_you"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLogout"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:singleLine="true"
+        android:text="@string/lbl_logout"
+        android:textAllCaps="false"
+        style="@style/btnSolidRoundedDialog2" />
+
+    <TextView
+        android:id="@+id/txtCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/inter"
+        android:textFontWeight="600"
+        android:textSize="16sp"
+        android:layout_gravity="center"
+        android:text="@string/lbl_cancel"
+        android:textColor="#202325"
+        android:layout_marginBottom="50dp"
+        />
+
+</LinearLayout>
