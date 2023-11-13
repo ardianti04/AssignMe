@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import androidx.appcompat.widget.AppCompatButton
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +24,8 @@ class Fragment_4_setting : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var btnLogout: AppCompatButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -34,8 +39,21 @@ class Fragment_4_setting : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_4_setting, container, false)
+        val view = inflater.inflate(R.layout.fragment_4_setting, container, false)
+
+        // Temukan tombol logout
+        val btnLogout = view.findViewById<AppCompatButton>(R.id.btnLogOut)
+
+        // Tambahkan OnClickListener ke tombol logout
+        btnLogout.setOnClickListener {
+            // Munculkan bottom sheet logout
+            val bottomSheetFragment = BS_logout()
+            bottomSheetFragment.setStyle(BottomSheetDialogFragment.STYLE_NORMAL, R.style.CustomTransparentBottomSheet)
+            bottomSheetFragment.show(parentFragmentManager, bottomSheetFragment.tag)
+        }
+        return view
     }
+
 
     companion object {
         /**
