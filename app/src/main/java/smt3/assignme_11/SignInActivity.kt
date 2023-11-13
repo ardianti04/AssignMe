@@ -1,20 +1,21 @@
 package smt3.assignme_11
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Button
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import com.google.android.material.textfield.TextInputEditText
-import androidx.core.content.ContextCompat
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import com.google.android.material.textfield.TextInputEditText
 import com.vishnusivadas.advanced_httpurlconnection.PutData
-import smt3.assignme_11.helper.PreferenceHelper
 import smt3.assignme_11.helper.Constant
+import smt3.assignme_11.helper.PreferenceHelper
+
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var sharedPref : PreferenceHelper
@@ -109,7 +110,7 @@ class SignInActivity : AppCompatActivity() {
                     data[1] = passwordInputLogin
 
                     val putData = PutData(
-                        "http://192.168.0.2/retrofit/login.php",
+                        Db_User.urlLogin,
                         "POST",
                         field,
                         data

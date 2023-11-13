@@ -15,7 +15,6 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.textfield.TextInputEditText
 import com.vishnusivadas.advanced_httpurlconnection.PutData
 
-
 class SignUpActivity : AppCompatActivity() {
     private lateinit var txtSignIn : TextView
 
@@ -25,7 +24,7 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var textInputConfirmPassword : TextInputEditText
     private lateinit var btnSignup : AppCompatButton
 
-    
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -100,7 +99,7 @@ class SignUpActivity : AppCompatActivity() {
                     data[2] = passwordInputSignup
                     //data[3] = confirmPasswordInputSignup
                     val putData = PutData(
-                        "http://192.168.0.2/retrofit/signup.php",
+                        Db_User.urlRegister,
                         "POST",
                         field,
                         data
@@ -145,8 +144,8 @@ class SignUpActivity : AppCompatActivity() {
             val intent = Intent( this@SignUpActivity, SignInActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
+            }
+
+
         }
-
-
-    }
 }
