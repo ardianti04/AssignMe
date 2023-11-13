@@ -113,7 +113,7 @@
                         app:placeholderText="Your name"
                         app:placeholderTextColor="@color/bluegray">
 
-                        <EditText
+                        <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/nameInputSignup"
                             style="@style/etRoundedOutline"
                             android:layout_width="match_parent"
@@ -124,10 +124,6 @@
                             android:ellipsize="end"
                             android:hint="@string/lbl_name"
                             android:inputType="textPersonName"
-                            android:paddingStart="@dimen/_16pxh"
-                            android:paddingTop="@dimen/_18pxv"
-                            android:paddingEnd="@dimen/_30pxh"
-                            android:paddingBottom="@dimen/_17pxv"
                             android:singleLine="true"
                             android:text=""
                             android:textColorHighlight="@color/white"
@@ -146,7 +142,7 @@
                         app:placeholderText="example@gmail.com"
                         app:placeholderTextColor="@color/bluegray">
 
-                        <EditText
+                        <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/emailInputSignup"
                             style="@style/etRoundedOutline"
                             android:layout_width="match_parent"
@@ -181,7 +177,7 @@
                         app:placeholderText="must be 8 characters"
                         app:placeholderTextColor="@color/bluegray">
 
-                        <EditText
+                        <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/passwordInputSignup"
                             style="@style/etRoundedOutline"
                             android:layout_width="match_parent"
@@ -218,7 +214,7 @@
                         app:placeholderText="repeat password"
                         app:placeholderTextColor="@color/bluegray">
 
-                        <EditText
+                        <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/ConfirmPasswordInputSignup"
                             style="@style/etRoundedOutline"
                             android:layout_width="match_parent"

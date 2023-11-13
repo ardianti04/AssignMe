@@ -144,7 +144,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnLogOut"
+            android:id="@+id/btnResetPassword"
             android:ellipsize="end"
             android:gravity="center"
             android:layout_gravity="center_horizontal"
