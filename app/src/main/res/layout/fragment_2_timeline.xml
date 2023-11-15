@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment_2_timeline">
+    android:orientation="vertical"
+    tools:context=".timeline.Fragment_2_timeline">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,32 +31,47 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayoutTimeline"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/topCLayout">
+        android:id="@+id/tabLayout"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        app:tabGravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rectangle_bg_white_rounded_border"
+        app:tabIndicator="@drawable/rectangle_bg_navy_rounded_tablayout"
+        app:tabIndicatorColor="@color/navy"
+        app:tabIndicatorHeight="35dp"
+        app:tabIndicatorFullWidth="true"
+        app:tabMode="fixed"
+        app:tabIndicatorAnimationMode="elastic"
+        app:tabTextColor="#7C7C7C"
+        app:tabSelectedTextColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/topCLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/todo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TO-DO"
-            android:id="@+id/todo"/>
+            android:text="To-Do" />
+
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/completed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Completed"
-            android:id="@+id/completed" />
+            android:text="Completed" />
+
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/overdue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Overdue"
-            android:id="@+id/overdue"/>
+            android:text="Overdue" />
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:id="@+id/viewPagerTimeline"
-        app:layout_constraintTop_toBottomOf="@id/tabLayoutTimeline"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
         app:layout_constraintBottom_toTopOf="@id/guideline"/>
 
     <androidx.constraintlayout.widget.Guideline
@@ -65,13 +82,13 @@
         app:layout_constraintGuide_percent="1" />
 
     <FrameLayout
-        android:id="@+id/main_fragment"
+        android:id="@+id/containerFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_gravity="center|top"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tabLayoutTimeline"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
         app:layout_constraintBottom_toTopOf="@id/guideline">
     </FrameLayout>
 
