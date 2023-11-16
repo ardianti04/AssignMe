@@ -65,41 +65,28 @@
                     app:layout_constraintTop_toBottomOf="@+id/txtNama" />
 
 
-                <ImageView
-                    android:id="@+id/btnMasukEditProfil"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="112dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/ic_masuk"
-                    app:layout_constraintBottom_toBottomOf="@+id/txthHelpCenter"
-                    app:layout_constraintStart_toEndOf="@+id/txthHelpCenter"
-                    app:layout_constraintTop_toTopOf="@+id/txthHelpCenter"
-                    app:layout_constraintVertical_bias="0.8" />
-
-                <ImageView
+                <ImageButton
                     android:id="@+id/btnMasukChangePassword"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="72dp"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="52dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/ic_masuk"
                     app:layout_constraintBottom_toBottomOf="@+id/txtChangePassword"
                     app:layout_constraintStart_toEndOf="@+id/txtChangePassword"
-                    app:layout_constraintTop_toTopOf="@+id/txtChangePassword"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintTop_toTopOf="@+id/txtChangePassword" />
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/btnMasukHelpCenter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="116dp"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="100dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/ic_masuk"
                     app:layout_constraintBottom_toBottomOf="@+id/txtEditProfile"
                     app:layout_constraintStart_toEndOf="@+id/txtEditProfile"
                     app:layout_constraintTop_toTopOf="@+id/txtEditProfile"
-                    app:layout_constraintVertical_bias="0.8" />
+                    app:layout_constraintVertical_bias="0.6" />
 
                 <ImageView
                     android:id="@+id/imgUbahImg"
@@ -123,22 +110,10 @@
                     app:srcCompat="@drawable/ic_edit_profile" />
 
                 <ImageView
-                    android:id="@+id/imgHelpCenter"
-                    android:layout_width="30dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="28dp"
-                    android:layout_marginTop="28dp"
-                    app:layout_constraintEnd_toEndOf="@+id/imgChangePassword"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="@+id/imgChangePassword"
-                    app:layout_constraintTop_toBottomOf="@+id/imgChangePassword"
-                    app:srcCompat="@drawable/ic_help_center" />
-
-                <ImageView
                     android:id="@+id/imgChangePassword"
                     android:layout_width="30dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="28dp"
+                    android:layout_marginTop="40dp"
                     app:layout_constraintEnd_toEndOf="@+id/imgEditProfile"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/imgEditProfile"
@@ -152,6 +127,7 @@
                     android:layout_marginStart="32dp"
                     android:text="Edit Profile"
                     android:textStyle="bold"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imgEditProfile"
                     app:layout_constraintStart_toEndOf="@+id/imgEditProfile"
                     app:layout_constraintTop_toTopOf="@+id/imgEditProfile"
@@ -161,24 +137,13 @@
                     android:id="@+id/txtChangePassword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
+                    android:layout_marginStart="36dp"
                     android:text="Change Password"
                     android:textStyle="bold"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imgChangePassword"
                     app:layout_constraintStart_toEndOf="@+id/imgChangePassword"
                     app:layout_constraintTop_toTopOf="@+id/imgChangePassword"
-                    app:layout_constraintVertical_bias="1.0" />
-
-                <TextView
-                    android:id="@+id/txthHelpCenter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:text="Help Center"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/imgHelpCenter"
-                    app:layout_constraintStart_toEndOf="@+id/imgHelpCenter"
-                    app:layout_constraintTop_toTopOf="@+id/imgHelpCenter"
                     app:layout_constraintVertical_bias="1.0" />
 
                 <androidx.appcompat.widget.AppCompatButton
