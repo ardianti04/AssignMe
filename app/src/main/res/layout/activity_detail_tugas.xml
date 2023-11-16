@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment_2_timeline">
+    tools:context=".timeline.Fragment_2_timeline">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topCLayout"

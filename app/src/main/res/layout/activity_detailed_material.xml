@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment_2_timeline">
+    tools:context=".timeline.Fragment_2_timeline">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topCLayout"
@@ -73,19 +73,27 @@
             app:cardCornerRadius="20sp"
             android:elevation="40sp">
 
-            <TextView
-                android:id="@+id/textView6"
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Attachments"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"/>
+                android:layout_height="wrap_content">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="40dp"
-                android:layout_marginLeft="10dp"/>
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Attachments"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_below="@+id/textView6"/>
+            </RelativeLayout>
+
+
 
         </androidx.cardview.widget.CardView>
 
@@ -96,34 +104,42 @@
             app:cardCornerRadius="20sp"
             android:elevation="40sp">
 
-            <TextView
-                android:id="@+id/txtNamaMateri"
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Materi Algebra"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/navy"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:layout_marginTop="10dp"/>
+                android:layout_height="wrap_content">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/navy"
-                android:layout_marginTop="50dp"
-                android:layout_marginLeft="10dp"
-                />
+                <TextView
+                    android:id="@+id/txtNamaMateri"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Materi Algebra"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/navy"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"/>
 
-            <TextView
-                android:id="@+id/txtDeskripsi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Deskripsi (opsional)"
-                android:textColor="@color/gray_600"
-                android:layout_marginTop="70dp"
-                android:layout_marginLeft="10dp"
-                />
+                <View
+                    android:id="@+id/garisLurus"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/navy"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_below="@+id/txtNamaMateri"/>
+
+                <TextView
+                    android:id="@+id/txtDeskripsi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Deskripsi (opsional)"
+                    android:textColor="@color/gray_600"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_below="@+id/garisLurus"/>
+
+            </RelativeLayout>
+
         </androidx.cardview.widget.CardView>
 
     </RelativeLayout>
