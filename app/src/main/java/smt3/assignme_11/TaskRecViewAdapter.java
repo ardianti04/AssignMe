@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +33,7 @@ public class TaskRecViewAdapter extends RecyclerView.Adapter<TaskRecViewAdapter.
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_task,parent,false);
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_todo,parent,false);
         return new ViewHolder(view);
     }
 
@@ -41,16 +42,13 @@ public class TaskRecViewAdapter extends RecyclerView.Adapter<TaskRecViewAdapter.
         Log.d(TAG, "onBindViewHolder: Called");
         holder.txtDeskripsiTugas.setText(tugas.get(holder.getBindingAdapterPosition()).getDeskripsi_tugas());
         holder.txtNamaMapel.setText(tugas.get(holder.getBindingAdapterPosition()).getNama_mapel());
-        Glide.with(mContext)
-                .asBitmap()
-                .load(tugas.get(holder.getBindingAdapterPosition()).getImageUrl())
-                .into(holder.imgKelas);
+        holder.iconAssignment.setImageResource(tugas.get(holder.getBindingAdapterPosition()).getImageResource());
+
 
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(mContext, tugas.get(holder.getBindingAdapterPosition()).getNama_mapel()+" Selected", Toast.LENGTH_SHORT).show();
-
 
                 Intent intent = new Intent(mContext, Detail_Tugas.class);
                 mContext.startActivity(intent);
@@ -71,16 +69,17 @@ public class TaskRecViewAdapter extends RecyclerView.Adapter<TaskRecViewAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         private CardView parent;
-        private ImageView imgKelas,imgTglBerakhir;
+        private ImageView iconAssignment;
+        private RelativeLayout iconLayout;
         private TextView txtNamaMapel,txtDeskripsiTugas,txtTglBerakhir;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             parent=itemView.findViewById(R.id.parent);
-            imgKelas=itemView.findViewById(R.id.imgKelas);
-            imgTglBerakhir=itemView.findViewById(R.id.imgEditProfile);
+            iconLayout=itemView.findViewById(R.id.relative1);
+            iconAssignment=itemView.findViewById(R.id.iconAssignment);
             txtNamaMapel=itemView.findViewById(R.id.txtNamaMapel);
-            txtDeskripsiTugas=itemView.findViewById(R.id.txtDeskrisiTugas);
+            txtDeskripsiTugas=itemView.findViewById(R.id.txtDeskripsiTugas);
             txtTglBerakhir=itemView.findViewById(R.id.txtTglBerakhir);
         }
     }
