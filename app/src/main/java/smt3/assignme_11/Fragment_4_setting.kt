@@ -1,13 +1,33 @@
 package smt3.assignme_11
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.appcompat.widget.AppCompatButton
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+
+
+//class SessionManager(private val context: Context) {
+//
+//    private val sharedPreferences: SharedPreferences =
+//        context.getSharedPreferences("user_session", Context.MODE_PRIVATE)
+//    private val editor: SharedPreferences.Editor = sharedPreferences.edit()
+//
+//    fun saveUserEmail(userEmail: String) {
+//        editor.putString("user_email", userEmail)
+//        editor.apply()
+//    }
+//
+//    fun getUserEmail(): String? {
+//        return sharedPreferences.getString("user_email", null)
+//    }
+//}
+
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,6 +40,7 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class Fragment_4_setting : Fragment() {
+//    private lateinit var viewModel: MyViewModel
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -41,6 +62,14 @@ class Fragment_4_setting : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_4_setting, container, false)
 
+        val btnMasukChangePassword = view.findViewById<ImageButton>(R.id.btnMasukChangePassword)
+
+        btnMasukChangePassword.setOnClickListener {
+            val intent = Intent(context, FP_3_resetpass::class.java)
+            startActivity(intent)
+        }
+
+
         // Temukan tombol logout
         val btnLogout = view.findViewById<AppCompatButton>(R.id.btnLogOut)
 
@@ -52,6 +81,50 @@ class Fragment_4_setting : Fragment() {
             bottomSheetFragment.show(parentFragmentManager, bottomSheetFragment.tag)
         }
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+//        // Inisialisasi SessionManager
+//        val sessionManager = SessionManager(requireContext())
+//
+//        viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
+//
+//        val emailInputLogin = sessionManager.getUserEmail()
+//
+//        // Panggil fungsi getUserData dengan menggunakan coroutine
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            try {
+//                val result = withContext(Dispatchers.Main) {
+//                    viewModel.getUserData(emailInputLogin.toString()).value
+//                }
+//
+//                // Handle hasilnya di sini
+//                if (result != null) {
+//                    try {
+//                        val jsonObject = JSONObject(result)
+//                        val username = jsonObject.getString("Username")
+//                        val email = jsonObject.getString("Email")
+//
+//                        // Update UI elements (TextViews) with username and email
+//                        view.findViewById<TextView>(R.id.txtNama).text = username
+//                        val emailTextView = view.findViewById<TextView>(R.id.txtEmail)
+//                        emailTextView.text = email
+//                    } catch (e: JSONException) {
+//                        e.printStackTrace()
+//                    }
+//                } else {
+//                    Log.e("Fragment_4_setting", "Result Json is null Server Response :$result")
+//                }
+//            } catch (e: JSONException) {
+//                Log.e("Fragment_4_setting", "Error parsing JSON: ${e.message}")
+//            } catch (e: Exception) {
+//                // Tangkap pengecualian umum
+//                Log.e("Fragment_4_setting", "An error occurred: ${e.message}")
+//            }
+//
+//        }
     }
 
 
