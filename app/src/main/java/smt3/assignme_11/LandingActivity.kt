@@ -1,6 +1,7 @@
 package smt3.assignme_11
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,7 @@ class LandingActivity : AppCompatActivity() {
     private lateinit var btnSignIn : Button
     private lateinit var btnCreateAccount : Button
     private lateinit var sharedPref : PreferenceHelper
+    private lateinit var sharedPreferences: SharedPreferences
 
     //test commit
 
@@ -36,7 +38,8 @@ class LandingActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        if (sharedPref.getBoolean(Constant.PREF_IS_LOGIN)){
+        sharedPreferences = getSharedPreferences("MyAppName", MODE_PRIVATE)
+        if (sharedPreferences.getString("logged", "false").equals("true")){
             moveIntent()
         }
     }

@@ -7,7 +7,7 @@ class PreferenceHelper(context: Context) {
 
     private val PREF_NAME = "AssignMe"
     private val sharedPref : SharedPreferences
-    val editor : SharedPreferences.Editor
+    private val editor : SharedPreferences.Editor
 
     init {
         sharedPref = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
