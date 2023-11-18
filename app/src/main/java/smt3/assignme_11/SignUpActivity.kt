@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -12,8 +13,15 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.Response
+import com.android.volley.VolleyError
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.google.android.material.textfield.TextInputEditText
 import com.vishnusivadas.advanced_httpurlconnection.PutData
+
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var txtSignIn : TextView
@@ -24,7 +32,7 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var textInputConfirmPassword : TextInputEditText
     private lateinit var btnSignup : AppCompatButton
 
-
+    
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,81 +63,60 @@ class SignUpActivity : AppCompatActivity() {
 
         btnSignup.setOnClickListener {
 
-            val nameInputSignup: String
-            val emailInputSignup: String
-            val passwordInputSignup: String
-            val confirmPasswordInputSignup: String
+            val username: String
+            val email: String
+            val password: String
+            val confirmPassword: String
 
-            nameInputSignup = textInputName.text.toString()
-            emailInputSignup = textInputEmail.text.toString()
-            passwordInputSignup = textInputPassword.text.toString()
-            confirmPasswordInputSignup = textInputConfirmPassword.text.toString()
+            username = textInputName.text.toString()
+            email = textInputEmail.text.toString()
+            password = textInputPassword.text.toString()
+            confirmPassword = textInputConfirmPassword.text.toString()
 
-            if (nameInputSignup.isNotEmpty() && emailInputSignup.isNotEmpty()
-                && passwordInputSignup.isNotEmpty() && confirmPasswordInputSignup.isNotEmpty()) {
+            if (username.isNotEmpty() && email.isNotEmpty()
+                && password.isNotEmpty() && confirmPassword.isNotEmpty()) {
 
-                if (!android.util.Patterns.EMAIL_ADDRESS.matcher(emailInputSignup).matches()) {
+                if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     Toast.makeText(applicationContext, "Format email tidak valid", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
-                if (passwordInputSignup.length < 8) {
+                if (password.length < 8) {
                     Toast.makeText(applicationContext, "Password harus minimal 8 karakter", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
-                if (passwordInputSignup != confirmPasswordInputSignup) {
+                if (password != confirmPassword) {
                     Toast.makeText(applicationContext, "Konfirmasi password tidak sama dengan password", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
 
-                //Start ProgressBar first (Set visibility VISIBLE)
+                val queue: RequestQueue = Volley.newRequestQueue(this)
+                val url = Db_User.urlRegister
 
-                val handler = Handler(Looper.getMainLooper())
-                handler.post {
-                    //Starting Write and Read data with URL
-                    //Creating array for parameters
-                    val field = arrayOfNulls<String>(3)
-                    field[0] = "Username"
-                    field[1] = "Email"
-                    field[2] = "Password"
-                    //field[3] = "confirmpassword"
-                    //Creating array for data
-                    val data = arrayOfNulls<String>(3)
-                    data[0] = nameInputSignup
-                    data[1] = emailInputSignup
-                    data[2] = passwordInputSignup
-                    //data[3] = confirmPasswordInputSignup
-                    val putData = PutData(
-                        Db_User.urlRegister,
-                        "POST",
-                        field,
-                        data
-                    )
-                    if (putData.startPut()) {
-                        if (putData.onComplete()) {
-                            val result = putData.result
-                            when {
-                                //when email is not in use
-                                result.equals("Signup Success") -> {
-                                    Toast.makeText(applicationContext, result, Toast.LENGTH_SHORT).show()
-                                    val intent = Intent(this, Main_Activity::class.java)
-                                    startActivity(intent)
-                                    finish()
-                                }
-                                //when email is already in use
-                                result.equals("Email already in use") -> {
-                                    Toast.makeText(applicationContext, result, Toast.LENGTH_SHORT).show()
-                                    // Handle the case where email is already in use
-                                }
-                                else -> {
-                                    Toast.makeText(applicationContext, result, Toast.LENGTH_SHORT).show()
-                                }
+                val stringRequest: StringRequest = object : StringRequest(
+                    Request.Method.POST, url,
+                    object : Response.Listener<String?> {
+                        override fun onResponse(response: String?) {
+                            if (response.equals("success")){
+                                Toast.makeText(getApplicationContext(), "Register successful", Toast.LENGTH_SHORT).show()
+                                val intent = Intent(applicationContext, Main_Activity::class.java)
+                                startActivity(intent)
+                                finish()
                             }
-                            Log.i("PutData", result)
                         }
-                    }
-                    //End Write and Read data with URL
+                    }, object : Response.ErrorListener {
+                        override fun onErrorResponse(error: VolleyError?) {
 
+                        }
+                    }) {
+                    override fun getParams(): Map<String, String> {
+                        val paramV: MutableMap<String, String> = HashMap()
+                        paramV["Username"] = username
+                        paramV["Email"] = email
+                        paramV["Password"] = password
+                        return paramV
+                    }
                 }
+                queue.add(stringRequest)
             }
             else {
                 Toast.makeText(applicationContext, "Semua kolom harus diisi", Toast.LENGTH_SHORT).show()
@@ -144,8 +131,8 @@ class SignUpActivity : AppCompatActivity() {
             val intent = Intent( this@SignUpActivity, SignInActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
-            }
-
-
         }
+
+
+    }
 }
