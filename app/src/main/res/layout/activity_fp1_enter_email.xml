@@ -83,8 +83,8 @@
             android:textColorHint="@color/black_900_7f"
             app:placeholderText="example@gmail.com"
             app:placeholderTextColor="@color/black_900_7f">
-            <EditText
-                android:id="@+id/emailInputFP"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email"
                 style="@style/etRoundedOutlineBlack"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -115,6 +115,20 @@
             android:text="@string/lbl_send_code"
             android:textAllCaps="false"
             style="@style/btnSolidRounded" />
+
+        <TextView
+            android:id="@+id/txtError"
+            style="@style/txtInterregular14red"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/_10pxh"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text=""/>
+
         <LinearLayout
             android:id="@+id/linearRememberPassword"
             android:layout_width="wrap_content"

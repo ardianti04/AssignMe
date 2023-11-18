@@ -29,6 +29,14 @@ class FP_4_status : AppCompatActivity() {
         btnBackToLogin.setOnClickListener { // Arahkan pengguna ke halaman login (SignInActivity)
             val intent = Intent(this@FP_4_status, SignInActivity::class.java)
             startActivity(intent)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            finish()
         }
+    }
+
+    override fun onBackPressed() {
+        // Biarkan default behavior onBackpressed terjadi
+        // Hilangkan pemanggilan super.onBackPressed() atau navigasi kembali di sini
+        // Jika ingin membatasi perilaku kembali, Anda bisa menambahkan logika di sini
     }
 }

@@ -10,19 +10,33 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.app.Dialog
 import android.graphics.drawable.ColorDrawable
+import android.util.Log
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import androidx.core.content.ContextCompat
 import android.view.WindowManager
 import android.view.Gravity
+import android.widget.Toast
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.Response
+import com.android.volley.VolleyError
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.goodiebag.pinview.Pinview
 
 class FP_2_otp : AppCompatActivity() {
     private lateinit var btnVerify : Button
     private lateinit var txtLogin : TextView
+    private lateinit var editTextOtp : Pinview
+    private lateinit var txtError : TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fp2_otp)
+
+
 
         //Back button func
         val pressedColor = ContextCompat.getColor(this, R.color.black_900_7f)
@@ -33,11 +47,50 @@ class FP_2_otp : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val email = intent.getStringExtra("Email")
         //Verify button func
+        txtError = findViewById(R.id.txtError)
+        editTextOtp = findViewById(R.id.otpCode)
         btnVerify = findViewById(R.id.btnVerify);
-        btnVerify.setOnClickListener { // Arahkan pengguna ke halaman login (SignInActivity)
-            val intent = Intent(this@FP_2_otp, FP_3_resetpass::class.java)
-            startActivity(intent)
+        btnVerify.setOnClickListener {
+
+            val otp: String
+
+            otp = editTextOtp.value
+
+            if (otp.isNotEmpty()) {
+
+                if (otp.length <4) {
+                    txtError.text = resources.getString(R.string.lbl_otpInvalid)
+                    return@setOnClickListener
+                }
+
+                val queue: RequestQueue = Volley.newRequestQueue(applicationContext)
+                val url = Db_User.urlCheckOtp
+                val stringRequest: StringRequest = object : StringRequest(
+                    Request.Method.POST, url,
+                    object : Response.Listener<String?> {
+                        override fun onResponse(response: String?) {
+                            if (response.equals("success")) {
+                                val intent = Intent(this@FP_2_otp, FP_3_resetpass::class.java)
+                                intent.putExtra("Email", email)
+                                startActivity(intent)
+                            } else txtError.text = response
+                        }
+                    }, object : Response.ErrorListener {
+                        override fun onErrorResponse(error: VolleyError) {
+                            error.printStackTrace()
+                        }
+                    }) {
+                    override fun getParams(): Map<String, String?> {
+                        val paramV: MutableMap<String, String?> = HashMap()
+                        paramV["Email"] = email
+                        paramV["Otp"] = otp
+                        return paramV
+                    }
+                }
+                queue.add(stringRequest)
+            }
         }
 
         //Login text func
