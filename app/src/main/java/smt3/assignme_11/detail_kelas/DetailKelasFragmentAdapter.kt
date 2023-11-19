@@ -1,4 +1,4 @@
-package detail_kelas
+package smt3.assignme_11.detail_kelas
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter

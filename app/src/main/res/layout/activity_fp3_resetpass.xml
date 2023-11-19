@@ -84,7 +84,8 @@
             android:textColorHint="@color/black_900_7f"
             app:placeholderText="must be 8 characters"
             app:placeholderTextColor="@color/black_900_7f">
-            <EditText
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/newPassInputFP"
                 style="@style/etRoundedOutlineBlack"
                 android:layout_width="match_parent"
@@ -100,7 +101,7 @@
                 android:paddingEnd="@dimen/_30pxh"
                 android:paddingBottom="@dimen/_17pxv"
                 android:singleLine="true"
-                android:text=""/>
+                android:text="" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -124,7 +125,7 @@
             android:textColorHint="@color/black_900_7f"
             app:placeholderText="repeat password"
             app:placeholderTextColor="@color/black_900_7f">
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/confirmNewPassInputFP"
                 style="@style/etRoundedOutlineBlack"
                 android:layout_width="match_parent"

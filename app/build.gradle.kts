@@ -67,5 +67,6 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
     implementation("com.google.guava:guava:30.1-jre")
+    implementation("com.android.volley:volley:1.2.1")
 
 }

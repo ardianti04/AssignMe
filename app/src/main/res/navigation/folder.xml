@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/second_fragment"
-        android:name="smt3.assignme_11.Fragment_2_timeline"
+        android:name="smt3.assignme_11.timeline.Fragment_2_timeline"
         android:label="Leaderboard"
         tools:layout="@layout/fragment_2_timeline" >
         <action

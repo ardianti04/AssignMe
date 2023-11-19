@@ -217,6 +217,19 @@
                             tools:text="@string/msg_forgot_password" />
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <ProgressBar
+                        android:id="@+id/loading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:visibility="gone"/>
+                    <TextView
+                        android:id="@+id/error"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:visibility="gone"/>
+
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnSignIn"
                         style="@style/btnSolidRounded_1"
@@ -224,8 +237,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginStart="@dimen/_10pxh"
-                        android:layout_marginTop="50dp"
                         android:layout_marginEnd="@dimen/_10pxh"
+                        android:layout_marginTop="40dp"
                         android:ellipsize="end"
                         android:gravity="center"
                         android:paddingStart="@dimen/_16pxh"

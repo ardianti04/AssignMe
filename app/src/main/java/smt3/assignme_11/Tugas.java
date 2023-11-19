@@ -10,13 +10,22 @@ public class Tugas {
     private String deskripsi_tugas;
     private String tgl_berakhir;
     private String imageUrl;
+    private int imageResource;
 
-    public Tugas(int id_Tugas, String nama_mapel, String deskripsi_tugas, String tgl_berakhir,String imageUrl) {
+    public Tugas(int id_Tugas, String nama_mapel, String deskripsi_tugas, String tgl_berakhir,int imageResource) {
         this.id_Tugas = id_Tugas;
         this.nama_mapel = nama_mapel;
         this.deskripsi_tugas = deskripsi_tugas;
         this.tgl_berakhir = tgl_berakhir;
-        this.imageUrl=imageUrl;
+        this.imageResource=imageResource;
+    }
+
+    public int getImageResource() {
+        return imageResource;
+    }
+
+    public void setImageResource(int imageResource) {
+        this.imageResource = imageResource;
     }
 
     public int getId_Tugas() {
