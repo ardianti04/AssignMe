@@ -1,4 +1,4 @@
-package smt3.assignme_11;
+package smt3.assignme_11.class_detail;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,10 +14,11 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-
 import java.util.ArrayList;
 
+import smt3.assignme_11.Detail_Tugas;
+import smt3.assignme_11.R;
+import smt3.assignme_11.Tugas;
 
 
 public class TaskRecViewAdapter extends RecyclerView.Adapter<TaskRecViewAdapter.ViewHolder>{
@@ -45,10 +45,12 @@ public class TaskRecViewAdapter extends RecyclerView.Adapter<TaskRecViewAdapter.
         holder.iconAssignment.setImageResource(tugas.get(holder.getBindingAdapterPosition()).getImageResource());
 
 
+
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(mContext, tugas.get(holder.getBindingAdapterPosition()).getNama_mapel()+" Selected", Toast.LENGTH_SHORT).show();
+
 
                 Intent intent = new Intent(mContext, Detail_Tugas.class);
                 mContext.startActivity(intent);
@@ -68,19 +70,19 @@ public class TaskRecViewAdapter extends RecyclerView.Adapter<TaskRecViewAdapter.
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
+
         private CardView parent;
-        private ImageView iconAssignment;
-        private RelativeLayout iconLayout;
+        private ImageView iconAssignment,imgEditProfile;
         private TextView txtNamaMapel,txtDeskripsiTugas,txtTglBerakhir;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             parent=itemView.findViewById(R.id.parent);
-            iconLayout=itemView.findViewById(R.id.relative1);
             iconAssignment=itemView.findViewById(R.id.iconAssignment);
             txtNamaMapel=itemView.findViewById(R.id.txtNamaMapel);
             txtDeskripsiTugas=itemView.findViewById(R.id.txtDeskripsiTugas);
             txtTglBerakhir=itemView.findViewById(R.id.txtTglBerakhir);
+            imgEditProfile=itemView.findViewById(R.id.imgEditProfile);
         }
     }
 }

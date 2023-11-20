@@ -7,10 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
 import smt3.assignme_11.R
-import smt3.assignme_11.TaskRecViewAdapter
 import smt3.assignme_11.Tugas
+import smt3.assignme_11.class_detail.TaskRecViewAdapter
 
 
 class TaskListFragment : Fragment() {
@@ -36,7 +35,8 @@ class TaskListFragment : Fragment() {
         // Inisialisasi RecyclerView dan adapter
         taskRecView = view.findViewById(R.id.taskRecView)
         taskRecView.layoutManager = LinearLayoutManager(requireContext())
-        adapter = TaskRecViewAdapter(requireContext())
+        adapter =
+            TaskRecViewAdapter(requireContext())
         taskRecView.adapter = adapter
 
         // Mendapatkan data tugas dan mengatur adapter
