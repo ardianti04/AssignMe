@@ -224,11 +224,17 @@
                         android:layout_gravity="center"
                         android:visibility="gone"/>
                     <TextView
-                        android:id="@+id/error"
+                        android:id="@+id/txtError"
+                        style="@style/txtInterregular14red"
+                        android:layout_gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:visibility="gone"/>
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="@dimen/_10pxh"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:text=""/>
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnSignIn"

@@ -11,13 +11,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+
+import smt3.assignme_11.class_detail.CLass_Detail;
+
 
 public class ClassRViewAdapter extends RecyclerView.Adapter<ClassRViewAdapter.ViewHolder>{
     private static final String TAG = "ClassRViewAdapter";
@@ -52,8 +57,11 @@ public class ClassRViewAdapter extends RecyclerView.Adapter<ClassRViewAdapter.Vi
             public void onClick(View view) {
                 Toast.makeText(mContext, kelas.get(holder.getBindingAdapterPosition()).getNama_kelas()+" Selected", Toast.LENGTH_SHORT).show();
 
+                FragmentManager fragmentManager = ((AppCompatActivity) mContext).getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-                Intent intent = new Intent(mContext, All_Class_Work.class);
+
+                Intent intent = new Intent(mContext, CLass_Detail.class);
                 mContext.startActivity(intent);
             }
         });
