@@ -1,7 +1,6 @@
-package smt3.assignme_11.class_detail;
+package smt3.assignme_11.timeline;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,33 +15,31 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import smt3.assignme_11.Detail_Tugas;
 import smt3.assignme_11.R;
+import smt3.assignme_11.class_detail.Tugas;
 
-
-public class TaskRecViewAdapter extends RecyclerView.Adapter<TaskRecViewAdapter.ViewHolder>{
-    private static final String TAG = "TaskRecViewAdapter";
+public class OverdueRecViewAdapter extends RecyclerView.Adapter<OverdueRecViewAdapter.ViewHolder>{
+    private static final String TAG = "OverdueRecViewAdapter";
     private ArrayList<Tugas> tugas=new ArrayList<>();
     private Context mContext;
 
-    public TaskRecViewAdapter(Context mContext) {
+    public OverdueRecViewAdapter(Context mContext) {
         this.mContext = mContext;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_todo,parent,false);
-        return new ViewHolder(view);
+    public OverdueRecViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_overdue,parent,false);
+        return new OverdueRecViewAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull OverdueRecViewAdapter.ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: Called");
         holder.txtDeskripsiTugas.setText(tugas.get(holder.getBindingAdapterPosition()).getDeskripsi_tugas());
         holder.txtNamaMapel.setText(tugas.get(holder.getBindingAdapterPosition()).getNama_mapel());
         holder.txtTglBerakhir.setText(tugas.get(holder.getBindingAdapterPosition()).getTgl_berakhir());
-
 
 
 
@@ -72,17 +69,18 @@ public class TaskRecViewAdapter extends RecyclerView.Adapter<TaskRecViewAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         private CardView parent;
-        private ImageView iconAssignment,imgEditProfile;
-        private TextView txtNamaMapel,txtDeskripsiTugas,txtTglBerakhir;
+        private ImageView imgKelas;
+        private TextView txtNamaMapel,txtDeskripsiTugas,txtTglBerakhir,late;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             parent=itemView.findViewById(R.id.parent);
-            iconAssignment=itemView.findViewById(R.id.iconAssignment);
+            imgKelas=itemView.findViewById(R.id.imgKelas);
             txtNamaMapel=itemView.findViewById(R.id.txtNamaMapel);
             txtDeskripsiTugas=itemView.findViewById(R.id.txtDeskripsiTugas);
             txtTglBerakhir=itemView.findViewById(R.id.txtTglBerakhir);
-            imgEditProfile=itemView.findViewById(R.id.imgEditProfile);
+            late=itemView.findViewById(R.id.late);
         }
     }
 }
+

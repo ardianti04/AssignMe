@@ -40,7 +40,6 @@ public class MaterialRecViewAdapter extends RecyclerView.Adapter<MaterialRecView
         Log.d(TAG, "onBindViewHolder: Called");
         holder.txtNamaMateri.setText(materis.get(holder.getBindingAdapterPosition()).getNama_Materi());
         holder.txtTglUpload.setText(materis.get(holder.getBindingAdapterPosition()).getTanggal_upload());
-        holder.imgMateri.setImageResource(materis.get(holder.getBindingAdapterPosition()).getImgMateri());
 
 
 

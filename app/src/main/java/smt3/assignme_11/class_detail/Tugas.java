@@ -1,4 +1,4 @@
-package smt3.assignme_11;
+package smt3.assignme_11.class_detail;
 
 import android.widget.ImageView;
 
@@ -10,23 +10,14 @@ public class Tugas {
     private String deskripsi_tugas;
     private String tgl_berakhir;
     private String imageUrl;
-    private int imageResource;
 
-    public Tugas(int id_Tugas, String nama_mapel, String deskripsi_tugas, String tgl_berakhir,int imageResource) {
+    public Tugas(int id_Tugas, String nama_mapel, String deskripsi_tugas, String tgl_berakhir) {
         this.id_Tugas = id_Tugas;
         this.nama_mapel = nama_mapel;
         this.deskripsi_tugas = deskripsi_tugas;
         this.tgl_berakhir = tgl_berakhir;
-        this.imageResource=imageResource;
     }
 
-    public int getImageResource() {
-        return imageResource;
-    }
-
-    public void setImageResource(int imageResource) {
-        this.imageResource = imageResource;
-    }
 
     public int getId_Tugas() {
         return id_Tugas;

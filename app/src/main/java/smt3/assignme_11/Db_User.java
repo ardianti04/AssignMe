@@ -1,7 +1,7 @@
 package smt3.assignme_11;
 
 public class Db_User {
-    public static String ip="192.168.0.2";
+    public static String ip="192.168.18.143";
 
     public static final String urlLogin="http://"+ip+"/assignmeAPI/login.php";
     //public static final String urlLogin="http://"+ip+"/retrofit/login.php";

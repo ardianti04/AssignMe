@@ -105,7 +105,7 @@
         app:itemRippleColor="@color/transparent"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/taskRecView"
+        android:id="@+id/teacherRecView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"

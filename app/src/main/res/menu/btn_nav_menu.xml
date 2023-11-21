@@ -12,13 +12,6 @@
         android:title="@string/lbl_timeline"
         android:icon="@drawable/ic_timeline"
         android:contentDescription="@string/lbl_timeline"/>
-
-    <item
-        android:id="@+id/buttonArchives"
-        android:title="@string/lbl_archive"
-        android:icon="@drawable/ic_archips"
-        android:contentDescription="@string/lbl_archive"/>
-
     <item
         android:id="@+id/buttonPengaturan"
         android:title="@string/lbl_setting"

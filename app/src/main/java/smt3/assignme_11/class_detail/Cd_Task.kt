@@ -41,7 +41,7 @@ class Cd_Task : Fragment() {
         sharedPreferences = requireContext().getSharedPreferences("MyAppName", AppCompatActivity.MODE_PRIVATE)
 
 
-        taskRecView = view.findViewById<RecyclerView?>(R.id.taskRecView)
+        taskRecView = view.findViewById<RecyclerView?>(R.id.teacherRecView)
         taskRecView.layoutManager = LinearLayoutManager(requireContext())
 
         adapter = TaskRecViewAdapter(requireContext())
@@ -82,7 +82,6 @@ class Cd_Task : Fragment() {
                 "Matematika",
                 "Tugas Mencatat",
                 "6 Juni 2023",
-                R.drawable.assignment_icon
             )
         )
         tugas.add(
@@ -90,8 +89,7 @@ class Cd_Task : Fragment() {
                 2,
                 "Bahasa indonesia",
                 "Tugas Mencatat",
-                "7 Juni 2023",
-                R.drawable.assignment_icon
+                "7 Juni 2023"
             )
         )
 

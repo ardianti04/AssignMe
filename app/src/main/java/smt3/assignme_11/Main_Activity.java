@@ -45,16 +45,7 @@ public class Main_Activity extends AppCompatActivity {
                     fragmentTransaction.replace(R.id.main_fragment, new Fragment_2_timeline());
                     fragmentTransaction.commit();
                 }
-
                 if (i==2){
-
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.main_fragment, new Fragment_3_archive());
-                    fragmentTransaction.commit();
-                }
-
-                if (i==3){
 
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

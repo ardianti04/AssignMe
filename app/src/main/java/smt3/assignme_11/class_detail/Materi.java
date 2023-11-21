@@ -4,13 +4,11 @@ public class Materi {
    private int id_Materi;
    private String nama_Materi;
    private String tanggal_upload;
-   private int imgMateri;
 
-    public Materi(int id_Materi, String nama_Materi, String tanggal_upload, int imgMateri) {
+    public Materi(int id_Materi, String nama_Materi, String tanggal_upload) {
         this.id_Materi = id_Materi;
         this.nama_Materi = nama_Materi;
         this.tanggal_upload = tanggal_upload;
-        this.imgMateri = imgMateri;
     }
 
     public int getId_Materi() {
@@ -37,13 +35,6 @@ public class Materi {
         this.tanggal_upload = tanggal_upload;
     }
 
-    public int getImgMateri() {
-        return imgMateri;
-    }
-
-    public void setImgMateri(int imgMateri) {
-        this.imgMateri = imgMateri;
-    }
 
     @Override
     public String toString() {
@@ -51,7 +42,6 @@ public class Materi {
                 "id_Materi=" + id_Materi +
                 ", nama_Materi='" + nama_Materi + '\'' +
                 ", tanggal_upload='" + tanggal_upload + '\'' +
-                ", imgMateri=" + imgMateri +
                 '}';
     }
 }

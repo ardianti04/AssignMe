@@ -20,8 +20,6 @@ import com.android.volley.toolbox.Volley
 import com.google.android.material.textfield.TextInputEditText
 import org.json.JSONException
 import org.json.JSONObject
-import smt3.assignme_11.helper.Constant
-import smt3.assignme_11.helper.PreferenceHelper
 
 
 class SignInActivity : AppCompatActivity() {
@@ -82,10 +80,9 @@ class SignInActivity : AppCompatActivity() {
         textInputEmail = findViewById(R.id.emailInputLogin);
         textInputPassword = findViewById(R.id.passwordInputLogin);
         progress = findViewById(R.id.loading);
-        txtError = findViewById(R.id.error);
+        txtError = findViewById(R.id.txtError);
         btnSignIn = findViewById(R.id.btnSignIn)
         btnSignIn.setOnClickListener{
-            txtError.visibility = View.GONE
             progress.visibility = View.GONE
 
 
@@ -129,7 +126,7 @@ class SignInActivity : AppCompatActivity() {
 
                                     Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_SHORT).show()
                                     moveIntent()
-                                }else Toast.makeText(applicationContext, response, Toast.LENGTH_SHORT).show()
+                                }else txtError.text = response
                             } catch (e: JSONException) {
                                 e.printStackTrace()
                             }
