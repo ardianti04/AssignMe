@@ -1,14 +1,24 @@
 package smt3.assignme_11
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
+import com.android.volley.RequestQueue
+import com.android.volley.VolleyError
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import org.json.JSONException
+import org.json.JSONObject
 
 
 //class SessionManager(private val context: Context) {
@@ -40,6 +50,11 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class Fragment_4_setting : Fragment() {
+
+    private lateinit var txtNama: TextView
+    private lateinit var txtEmail: TextView
+    private lateinit var sharedPreferences: SharedPreferences
+
 //    private lateinit var viewModel: MyViewModel
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -61,6 +76,9 @@ class Fragment_4_setting : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_4_setting, container, false)
+        sharedPreferences = requireContext().getSharedPreferences("MyAppName", AppCompatActivity.MODE_PRIVATE)
+        txtNama = view.findViewById(R.id.txtNama)
+        txtEmail=view.findViewById(R.id.txtEmail)
 
         val btnMasukChangePassword = view.findViewById<ImageButton>(R.id.btnMasukChangePassword)
 
@@ -80,51 +98,58 @@ class Fragment_4_setting : Fragment() {
             bottomSheetFragment.setStyle(BottomSheetDialogFragment.STYLE_NORMAL, R.style.CustomTransparentBottomSheet)
             bottomSheetFragment.show(parentFragmentManager, bottomSheetFragment.tag)
         }
+        tampilkanDataSetting()
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        // Inisialisasi SessionManager
-//        val sessionManager = SessionManager(requireContext())
-//
-//        viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
-//
-//        val emailInputLogin = sessionManager.getUserEmail()
-//
-//        // Panggil fungsi getUserData dengan menggunakan coroutine
-//        viewLifecycleOwner.lifecycleScope.launch {
-//            try {
-//                val result = withContext(Dispatchers.Main) {
-//                    viewModel.getUserData(emailInputLogin.toString()).value
-//                }
-//
-//                // Handle hasilnya di sini
-//                if (result != null) {
-//                    try {
-//                        val jsonObject = JSONObject(result)
-//                        val username = jsonObject.getString("Username")
-//                        val email = jsonObject.getString("Email")
-//
-//                        // Update UI elements (TextViews) with username and email
-//                        view.findViewById<TextView>(R.id.txtNama).text = username
-//                        val emailTextView = view.findViewById<TextView>(R.id.txtEmail)
-//                        emailTextView.text = email
-//                    } catch (e: JSONException) {
-//                        e.printStackTrace()
-//                    }
-//                } else {
-//                    Log.e("Fragment_4_setting", "Result Json is null Server Response :$result")
-//                }
-//            } catch (e: JSONException) {
-//                Log.e("Fragment_4_setting", "Error parsing JSON: ${e.message}")
-//            } catch (e: Exception) {
-//                // Tangkap pengecualian umum
-//                Log.e("Fragment_4_setting", "An error occurred: ${e.message}")
-//            }
-//
-//        }
+    }
+    private fun tampilkanDataSetting() {
+        val queue: RequestQueue = Volley.newRequestQueue(requireContext())
+        val url = Db_User.urlSetting
+
+        val stringRequest: StringRequest = object : StringRequest(
+            com.android.volley.Request.Method.POST, url,
+            object : com.android.volley.Response.Listener<String?> {
+                override fun onResponse(response: String?) {
+                    // Mengurai respons JSON
+                    try {
+                        val jsonResponse = JSONObject(response)
+                        val status = jsonResponse.getString("status")
+
+                        // Periksa status untuk memastikan itu sukses sebelum menampilkan data
+                        if (status.equals("success", ignoreCase = true)) {
+                            val username = jsonResponse.getString("Username").replace("\"", "")
+                            val email = jsonResponse.getString("Email").replace("\"", "")
+
+                            // Tampilkan data di UI
+                            txtNama.text = username
+                            txtEmail.text = email
+                        } else {
+                            val message = jsonResponse.optString("message", "Unknown error")
+                            Toast.makeText(requireContext(), "Error: $message", Toast.LENGTH_SHORT).show()
+                        }
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                    }
+                }
+            }, object : com.android.volley.Response.ErrorListener {
+                override fun onErrorResponse(error: VolleyError) {
+                    error.printStackTrace()
+                }
+            }) {
+            override fun getParams(): Map<String, String?> {
+                val paramV: MutableMap<String, String?> = HashMap()
+                paramV["Email"] = sharedPreferences.getString("Email", "")
+                paramV["apiKey"] = sharedPreferences.getString("apiKey", "")
+                paramV["Username"] = sharedPreferences.getString("Username", "")
+                //paramV["Username"] = sharedPreferences.getString("Username", "")
+                return paramV
+            }
+        }
+        queue.add(stringRequest)
     }
 
 
