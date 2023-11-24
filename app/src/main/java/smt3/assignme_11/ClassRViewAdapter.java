@@ -43,13 +43,11 @@ public class ClassRViewAdapter extends RecyclerView.Adapter<ClassRViewAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
         Log.d(TAG, "onBindViewHolder: Called");
-        holder.txtNamakelas.setText(kelas.get(holder.getBindingAdapterPosition()).getNama_kelas());
+        holder.txtNamaKelas.setText(kelas.get(holder.getBindingAdapterPosition()).getNama_kelas());
         holder.txtNamaMapel.setText(kelas.get(holder.getBindingAdapterPosition()).getNama_mapel());
-        Glide.with(mContext)
-                .asBitmap()
-                .load(kelas.get(holder.getBindingAdapterPosition()).getImageUrl())
-                .into(holder.imgKelas);
+
 
 
         holder.parent.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +78,7 @@ public class ClassRViewAdapter extends RecyclerView.Adapter<ClassRViewAdapter.Vi
     public class ViewHolder extends RecyclerView.ViewHolder{
         private CardView parent;
         private ImageView imgKelas;
-        private TextView txtNamaMapel,txtNamakelas;
+        private TextView txtNamaMapel,txtNamaKelas;
 
          public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -88,7 +86,8 @@ public class ClassRViewAdapter extends RecyclerView.Adapter<ClassRViewAdapter.Vi
             parent=itemView.findViewById(R.id.parent);
             imgKelas=itemView.findViewById(R.id.imgKelas);
             txtNamaMapel=itemView.findViewById(R.id.txtNamaMapel);
-            txtNamakelas=itemView.findViewById(R.id.txtNamakelas);
+            txtNamaKelas=itemView.findViewById(R.id.txtNamaKelas);
+
 
 
 

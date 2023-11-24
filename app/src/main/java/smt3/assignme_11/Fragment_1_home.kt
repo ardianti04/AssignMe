@@ -3,20 +3,28 @@ package smt3.assignme_11
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Request
 import com.android.volley.RequestQueue
+import com.android.volley.Response
 import com.android.volley.VolleyError
+import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley.newRequestQueue
+import org.json.JSONArray
+import org.json.JSONException
+import org.json.JSONObject
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,7 +66,7 @@ class Fragment_1_home : Fragment() {
         sharedPreferences = requireContext().getSharedPreferences("MyAppName", AppCompatActivity.MODE_PRIVATE)
         txtName = view.findViewById(R.id.txtName)
 
-        val btnTambah = view.findViewById<ImageButton>(R.id.btnTambah)
+        btnTambah = view.findViewById<ImageButton>(R.id.btnTambah)
         val pressedColor = ContextCompat.getColor(requireContext(), R.color.black_900_7f)
         btnTambah.setOnClickListener {
             btnTambah.setColorFilter(pressedColor)
@@ -67,15 +75,14 @@ class Fragment_1_home : Fragment() {
         }
 
         classRecView = view.findViewById<RecyclerView?>(R.id.classRecView)
+        adapter = ClassRViewAdapter(requireContext())
+
+        // Atur adapter ke RecyclerView
+        classRecView.adapter = adapter
         classRecView.layoutManager = LinearLayoutManager(requireContext())
 
-        adapter = ClassRViewAdapter(requireContext())
-        classRecView.adapter = adapter
-
-        val kelas = getClassData()
-        adapter.setKelas(kelas)
-
         nama()
+        getClassDataFromApi()
 
         return view
 
@@ -109,6 +116,76 @@ class Fragment_1_home : Fragment() {
         queue.add(stringRequest)
         }
 
+
+    fun getClassDataFromApi() {
+        val queue: RequestQueue = newRequestQueue(requireContext())
+        val url = Db_User.urlRecViewHome // Gantilah dengan URL API Anda
+
+        val jsonArrayRequest = JsonArrayRequest(Request.Method.GET, url, null,
+            Response.Listener<JSONArray> { response ->
+                Log.d("API_RESPONSE", response.toString())
+                val kelasList = parseJsonResponse(response)
+                adapter.setKelas(kelasList)
+            },
+            Response.ErrorListener { error ->
+                // Handle error
+                if (error.networkResponse != null && error.networkResponse.data != null) {
+                    try {
+                        // Coba mengonversi respons ke dalam objek JSON tunggal
+                        val jsonResponse = JSONObject(String(error.networkResponse.data))
+                        // Periksa apakah respons adalah objek JSON tunggal
+                        if (jsonResponse.has("status") && jsonResponse.has("message")) {
+                            // Tangani respons objek JSON tunggal
+                            Log.e("API_ERROR", "Error fetching class data: ${jsonResponse.getString("message")}")
+                            Toast.makeText(requireContext(), jsonResponse.getString("message"), Toast.LENGTH_SHORT).show()
+                        } else {
+                            // Tangani respons yang tidak diharapkan
+                            Log.e("API_ERROR", "Unexpected error fetching class data", error)
+                            Toast.makeText(requireContext(), "Unexpected error fetching class data", Toast.LENGTH_SHORT).show()
+                        }
+                    } catch (e: JSONException) {
+                        // Tangani kesalahan pengonversian
+                        Log.e("API_ERROR", "Error converting error response to JSON", e)
+                        Toast.makeText(requireContext(), "Error converting error response to JSON", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    // Tangani ketika networkResponse atau datanya null
+                    Log.e("API_ERROR", "Error network response is null")
+                    Toast.makeText(requireContext(), "Error network response is null", Toast.LENGTH_SHORT).show()
+
+                    activity?.runOnUiThread {
+                        // Update UI di sini
+                        Toast.makeText(requireContext(), "Error network response is null", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        )
+
+
+        queue.add(jsonArrayRequest)
+    }
+
+    private fun parseJsonResponse(response: JSONArray): ArrayList<Kelas> {
+        val kelasList = ArrayList<Kelas>()
+
+        for (i in 0 until response.length()) {
+            try {
+                val jsonObject: JSONObject = response.getJSONObject(i)
+
+                val namaKelas = jsonObject.getString("ClassName")
+                val namaMapel = jsonObject.getString("SubjectName")
+
+                val kelas = Kelas(namaKelas,namaMapel)
+                kelasList.add(kelas)
+            } catch (e: JSONException) {
+                e.printStackTrace()
+            }
+        }
+
+        return kelasList
+    }
+
+
     companion object {
         /**
          * Use this factory method to create a new instance of
@@ -129,34 +206,4 @@ class Fragment_1_home : Fragment() {
             }
     }
 
-
-
-
-
-    fun getClassData(): ArrayList<Kelas>? {
-        val kelas = ArrayList<Kelas>()
-        kelas.add(
-            Kelas(
-                1,
-                "Kelas XII E",
-                "E234",
-                "Citra Kirana",
-                "Matematika",
-                "Kelas untuk siswa ini saja",
-                "https://image.gambarpng.id/pngs/gambar-transparent-perlengkapan-belajar-matematika_56394.png"
-            )
-        )
-        kelas.add(
-            Kelas(
-                2,
-                "Kelas XII A",
-                "A234",
-                "Lusiana",
-                "IPA",
-                "Kelas untuk siswa ini saja",
-                "https://primaindisoft.com/wp-content/uploads/2019/09/ipa.png"
-            )
-        )
-        return kelas
-    }
 }

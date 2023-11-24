@@ -4,19 +4,19 @@ public class Kelas  {
     private int id_kelas;
     private String nama_kelas;
     private String kode_kelas;
-    private String nama_guru;
     private String nama_mapel;
     private String dekripsi;
-    private String imageUrl;
 
-    public Kelas(int id_kelas, String nama_kelas, String kode_kelas, String nama_guru, String nama_mapel, String dekripsi, String imageUrl) {
-        this.id_kelas = id_kelas;
+    public Kelas(String nama_kelas, String kode_kelas, String nama_mapel, String dekripsi) {
         this.nama_kelas = nama_kelas;
         this.kode_kelas = kode_kelas;
-        this.nama_guru = nama_guru;
         this.nama_mapel = nama_mapel;
         this.dekripsi = dekripsi;
-        this.imageUrl = imageUrl;
+    }
+
+    public Kelas(String nama_kelas, String nama_mapel) {
+        this.nama_kelas = nama_kelas;
+        this.nama_mapel = nama_mapel;
     }
 
     public int getId_kelas() {
@@ -43,14 +43,6 @@ public class Kelas  {
         this.kode_kelas = kode_kelas;
     }
 
-    public String getNama_guru() {
-        return nama_guru;
-    }
-
-    public void setNama_guru(String nama_guru) {
-        this.nama_guru = nama_guru;
-    }
-
     public String getNama_mapel() {
         return nama_mapel;
     }
@@ -67,12 +59,15 @@ public class Kelas  {
         this.dekripsi = dekripsi;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    @Override
+    public String toString() {
+        return "Kelas{" +
+                "id_kelas=" + id_kelas +
+                ", nama_kelas='" + nama_kelas + '\'' +
+                ", kode_kelas='" + kode_kelas + '\'' +
+                ", nama_mapel='" + nama_mapel + '\'' +
+                ", dekripsi='" + dekripsi + '\'' +
+                '}';
     }
 }
 

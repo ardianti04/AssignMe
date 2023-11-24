@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import smt3.assignme_11.Detail_Tugas;
+import smt3.assignme_11.Detailed_Material;
 import smt3.assignme_11.R;
 
 public class MaterialRecViewAdapter extends RecyclerView.Adapter<MaterialRecViewAdapter.ViewHolder>{
@@ -49,8 +50,8 @@ public class MaterialRecViewAdapter extends RecyclerView.Adapter<MaterialRecView
                 Toast.makeText(mContext, materis.get(holder.getBindingAdapterPosition()).getNama_Materi()+" Selected", Toast.LENGTH_SHORT).show();
 
 
-//                Intent intent = new Intent(mContext, Detail_Tugas.class);
-//                mContext.startActivity(intent);
+                Intent intent = new Intent(mContext, Detailed_Material.class);
+                mContext.startActivity(intent);
             }
         });
 

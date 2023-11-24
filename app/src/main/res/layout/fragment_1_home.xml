@@ -124,7 +124,8 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/topCLayout"
-            app:layout_constraintVertical_bias="0.105" />
+            app:layout_constraintVertical_bias="0.105"
+            android:layout_marginTop="10dp"/>
     </FrameLayout>
 
 

@@ -40,6 +40,8 @@ public class CLass_Detail extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+//        String namaKelas = getIntent().getStringExtra("nama_kelas");
+//        String namaMapel = getIntent().getStringExtra("nama_mapel");
 
         tabLayout=findViewById(R.id.tabLayout);
         viewPager2=findViewById(R.id.viewPager);
