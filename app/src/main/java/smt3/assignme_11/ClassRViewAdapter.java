@@ -43,11 +43,9 @@ public class ClassRViewAdapter extends RecyclerView.Adapter<ClassRViewAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
         Log.d(TAG, "onBindViewHolder: Called");
-        holder.txtNamaKelas.setText(kelas.get(holder.getBindingAdapterPosition()).getNama_kelas());
+        holder.txtNamakelas.setText(kelas.get(holder.getBindingAdapterPosition()).getNama_kelas());
         holder.txtNamaMapel.setText(kelas.get(holder.getBindingAdapterPosition()).getNama_mapel());
-
 
 
         holder.parent.setOnClickListener(new View.OnClickListener() {
@@ -77,17 +75,14 @@ public class ClassRViewAdapter extends RecyclerView.Adapter<ClassRViewAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         private CardView parent;
-        private ImageView imgKelas;
-        private TextView txtNamaMapel,txtNamaKelas;
+        private TextView txtNamaMapel,txtNamakelas;
 
          public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            parent=itemView.findViewById(R.id.parent);
-            imgKelas=itemView.findViewById(R.id.imgKelas);
-            txtNamaMapel=itemView.findViewById(R.id.txtNamaMapel);
-            txtNamaKelas=itemView.findViewById(R.id.txtNamaKelas);
-
+            parent=itemView.findViewById(R.id.parent1);
+            txtNamaMapel=itemView.findViewById(R.id.txtNamaMapel1);
+            txtNamakelas=itemView.findViewById(R.id.txtNamaKelas1);
 
 
 

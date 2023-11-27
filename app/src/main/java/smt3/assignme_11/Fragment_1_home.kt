@@ -1,15 +1,14 @@
 package smt3.assignme_11
 
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -19,23 +18,13 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.VolleyError
-import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.android.volley.toolbox.Volley.newRequestQueue
-import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [Fragment_1_home.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Fragment_1_home : Fragment() {
 
     private lateinit var classRecView: RecyclerView
@@ -45,15 +34,11 @@ class Fragment_1_home : Fragment() {
     private lateinit var sharedPreferences: SharedPreferences
 
 
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
         }
     }
 
@@ -64,28 +49,122 @@ class Fragment_1_home : Fragment() {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_1_home, container, false)
         sharedPreferences = requireContext().getSharedPreferences("MyAppName", AppCompatActivity.MODE_PRIVATE)
+        val username = sharedPreferences.getString("Username", "")
+        val email = sharedPreferences.getString("Email", "")
+        val apiKey = sharedPreferences.getString("apiKey", "")
+
         txtName = view.findViewById(R.id.txtName)
 
-        btnTambah = view.findViewById<ImageButton>(R.id.btnTambah)
+        val btnTambah = view.findViewById<ImageButton>(R.id.btnTambah)
         val pressedColor = ContextCompat.getColor(requireContext(), R.color.black_900_7f)
         btnTambah.setOnClickListener {
             btnTambah.setColorFilter(pressedColor)
+            val requestCode = 123
             val intent = Intent(requireContext(), JoinClassActivity::class.java)
-            startActivity(intent)
+            activity?.startActivityForResult(intent, requestCode)
         }
 
-        classRecView = view.findViewById<RecyclerView?>(R.id.classRecView)
-        adapter = ClassRViewAdapter(requireContext())
-
-        // Atur adapter ke RecyclerView
-        classRecView.adapter = adapter
+        classRecView = view.findViewById<RecyclerView>(R.id.classRecView) ?: RecyclerView(requireContext())
         classRecView.layoutManager = LinearLayoutManager(requireContext())
+        adapter = ClassRViewAdapter(requireContext())
+        classRecView.adapter = adapter
 
         nama()
-        getClassDataFromApi()
+        getJoinedClasses()
 
         return view
 
+    }
+
+    private fun getJoinedClasses() {
+        val queue: RequestQueue = newRequestQueue(requireContext())
+        val url = Db_User.urlShowJoinedClass
+
+        val stringRequest: StringRequest = object : StringRequest(
+            com.android.volley.Request.Method.POST, url,
+            object : com.android.volley.Response.Listener<String?> {
+                override fun onResponse(response: String?) {
+                    response?.let {
+                        if (it.isNotEmpty()) {
+                            val joinedClasses = parseJoinedClasses(it)
+                            showJoinedClasses(joinedClasses)
+                        } else {
+                            // Handle empty response here
+                        }
+                    } ?: run {
+                        // Handle null response here
+                    }
+                }
+            }, object : com.android.volley.Response.ErrorListener {
+                override fun onErrorResponse(error: VolleyError) {
+                    error.printStackTrace()
+                    // Handle error responses here
+                }
+            }) {
+            override fun getParams(): Map<String, String?> {
+                val paramV: MutableMap<String, String?> = HashMap()
+                paramV["Email"] = sharedPreferences.getString("Email", "")
+                return paramV
+            }
+        }
+        queue.add(stringRequest)
+    }
+
+    // Fungsi untuk mengurai response JSON dan mendapatkan daftar kelas yang telah di-join
+    private fun parseJoinedClasses(response: String): ArrayList<Kelas> {
+        val joinedClasses = ArrayList<Kelas>()
+
+        try {
+            val jsonResponse = JSONObject(response)
+            val userClassesArray = jsonResponse.getJSONArray("userClasses")
+
+            for (i in 0 until userClassesArray.length()) {
+                val classObj = userClassesArray.getJSONObject(i)
+                val classId = classObj.getInt("ClassId")
+                val className = classObj.getString("ClassName")
+                val subjectName = classObj.getString("SubjectName")
+
+                // Create Kelas object and add to the list
+                val kelas = Kelas(
+                    classId,
+                    className,
+                    "",
+                    "", // Fill in other fields as needed
+                    subjectName,
+                    ""
+                )
+                joinedClasses.add(kelas)
+            }
+        } catch (e: JSONException) {
+            e.printStackTrace()
+            // Handle JSON parsing error here
+        }
+
+        return joinedClasses
+    }
+
+    // Fungsi untuk menampilkan daftar kelas yang telah di-join menggunakan RecyclerView
+    private fun showJoinedClasses(joinedClasses: ArrayList<Kelas>) {
+        val joinedClassesArrayList = ArrayList(joinedClasses)
+        adapter.setKelas(joinedClassesArrayList)
+        adapter.notifyDataSetChanged()
+        classRecView.visibility = View.VISIBLE
+        if (joinedClassesArrayList.isEmpty()) {
+            // Handle UI jika tidak ada kelas yang di-join
+        }
+    }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 123 && resultCode == RESULT_OK) { // Sesuaikan dengan kode permintaan Anda
+            if (data != null) {
+                val className = data.getStringExtra("ClassName")
+                val subjectName = data.getStringExtra("SubjectName")
+                // Lakukan sesuatu dengan className dan subjectName yang Anda terima
+            }
+        }
     }
 
     private fun nama() {
@@ -109,7 +188,6 @@ class Fragment_1_home : Fragment() {
                 paramV["Email"] = sharedPreferences.getString("Email", "")
                 paramV["apiKey"] = sharedPreferences.getString("apiKey", "")
                 paramV["Username"] = sharedPreferences.getString("Username", "")
-                //paramV["Username"] = sharedPreferences.getString("Username", "")
                 return paramV
             }
         }
@@ -117,93 +195,28 @@ class Fragment_1_home : Fragment() {
         }
 
 
-    fun getClassDataFromApi() {
-        val queue: RequestQueue = newRequestQueue(requireContext())
-        val url = Db_User.urlRecViewHome // Gantilah dengan URL API Anda
-
-        val jsonArrayRequest = JsonArrayRequest(Request.Method.GET, url, null,
-            Response.Listener<JSONArray> { response ->
-                Log.d("API_RESPONSE", response.toString())
-                val kelasList = parseJsonResponse(response)
-                adapter.setKelas(kelasList)
-            },
-            Response.ErrorListener { error ->
-                // Handle error
-                if (error.networkResponse != null && error.networkResponse.data != null) {
-                    try {
-                        // Coba mengonversi respons ke dalam objek JSON tunggal
-                        val jsonResponse = JSONObject(String(error.networkResponse.data))
-                        // Periksa apakah respons adalah objek JSON tunggal
-                        if (jsonResponse.has("status") && jsonResponse.has("message")) {
-                            // Tangani respons objek JSON tunggal
-                            Log.e("API_ERROR", "Error fetching class data: ${jsonResponse.getString("message")}")
-                            Toast.makeText(requireContext(), jsonResponse.getString("message"), Toast.LENGTH_SHORT).show()
-                        } else {
-                            // Tangani respons yang tidak diharapkan
-                            Log.e("API_ERROR", "Unexpected error fetching class data", error)
-                            Toast.makeText(requireContext(), "Unexpected error fetching class data", Toast.LENGTH_SHORT).show()
-                        }
-                    } catch (e: JSONException) {
-                        // Tangani kesalahan pengonversian
-                        Log.e("API_ERROR", "Error converting error response to JSON", e)
-                        Toast.makeText(requireContext(), "Error converting error response to JSON", Toast.LENGTH_SHORT).show()
-                    }
-                } else {
-                    // Tangani ketika networkResponse atau datanya null
-                    Log.e("API_ERROR", "Error network response is null")
-                    Toast.makeText(requireContext(), "Error network response is null", Toast.LENGTH_SHORT).show()
-
-                    activity?.runOnUiThread {
-                        // Update UI di sini
-                        Toast.makeText(requireContext(), "Error network response is null", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
+    /*fun getClassData(): ArrayList<Kelas>? {
+        val kelas = ArrayList<Kelas>()
+        kelas.add(
+            Kelas(
+                1,
+                "Kelas XII E",
+                "E234",
+                "Citra Kirana",
+                "Matematika",
+                "Kelas untuk siswa ini saja"
+            )
         )
-
-
-        queue.add(jsonArrayRequest)
-    }
-
-    private fun parseJsonResponse(response: JSONArray): ArrayList<Kelas> {
-        val kelasList = ArrayList<Kelas>()
-
-        for (i in 0 until response.length()) {
-            try {
-                val jsonObject: JSONObject = response.getJSONObject(i)
-
-                val namaKelas = jsonObject.getString("ClassName")
-                val namaMapel = jsonObject.getString("SubjectName")
-
-                val kelas = Kelas(namaKelas,namaMapel)
-                kelasList.add(kelas)
-            } catch (e: JSONException) {
-                e.printStackTrace()
-            }
-        }
-
-        return kelasList
-    }
-
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Fragment_1_home.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Fragment_1_home().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
-
+        kelas.add(
+            Kelas(
+                2,
+                "Kelas XII A",
+                "A234",
+                "Lusiana",
+                "IPA",
+                "Kelas untuk siswa ini saja"
+            )
+        )
+        return kelas
+    }*/
 }

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="340dp"
+    android:layout_width="match_parent"
     android:layout_height="110dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/parent"
+    android:id="@+id/parent1"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="20dp"
-    app:cardElevation="10dp"
+    app:cardElevation="0dp"
+    android:focusable="false"
     android:layout_marginTop="10dp">
 
     <RelativeLayout
@@ -25,7 +28,7 @@
             android:background="@drawable/rectengle_kelas">
 
             <ImageView
-                android:id="@+id/imgKelas"
+                android:id="@+id/imgKelas1"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_centerInParent="true"
@@ -47,7 +50,7 @@
             android:layout_toEndOf="@+id/relative1">
 
             <TextView
-                android:id="@+id/txtNamaMapel"
+                android:id="@+id/txtNamaMapel1"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
@@ -57,10 +60,10 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txtNamaKelas"
+                android:id="@+id/txtNamaKelas1"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txtNamaMapel"
+                android:layout_below="@+id/txtNamaMapel1"
                 android:text="Kelas XII E"
                 android:textColor="@color/black_900_b2"
                 android:textStyle="bold"
