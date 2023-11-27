@@ -45,6 +45,11 @@
 then enter the code below.</string>
     <string name="lbl_cancel">Cancel</string>
     <string name="lbl_class_code">Class Code</string>
+    <string name="lbl_column_must_be_filled">Column must be filled</string>
+    <string name="lbl_username">Username</string>
+    <string name="lbl_save">Save</string>
+    <string name="lbl_change_username">Change Username</string>
+    <string name="lbl_edit_username_desc">Enter a new username. This username will be displayed to others. </string>
 
 
     <string name="waving_hand">wavingHandImage</string>
@@ -62,6 +67,12 @@ then enter the code below.</string>
     <string name="lbl_logout_account">Logout Account?</string>
     <string name="lbl_are_you_sure_you">Are you sure you sure want to logout from this account?</string>
     <string name="lbl_logout">Logout</string>
-    <string name="lbl_otpInvalid">OTP invalid</string>
+    <string name="lbl_otpInvalid">OTP must be 4 digits</string>
     <string name="lbl_emailInvalid">Email is invalid</string>
+    <string name="lbl_emailFormatInvalid">Email format is invalid</string>
+    <string name="lbl_edit_profile">Edit Profile</string>
+    <string name="change_profile_picture">Change Profile Picture</string>
+    <string name="profile_info">Profile info</string>
+    <string name="code_cannot_be_empty">Code cannot be empty</string>
+    <string name="code_must_be_6_characters">Code must be 6 characters</string>
 </resources>

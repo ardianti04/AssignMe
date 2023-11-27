@@ -81,7 +81,7 @@
             app:placeholderText="Enter class code"
             app:placeholderTextColor="@color/black_900_7f">
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editClassCode"
+                android:id="@+id/inputClassCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -98,6 +98,19 @@
                 android:singleLine="true"
                 style="@style/etRoundedOutlineBlack"/>
         </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/txtErrorJoin"
+            style="@style/txtInterregular14red"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/_10pxh"
+            android:ellipsize="end"
+            android:singleLine="false"
+            android:text="" />
 
         <LinearLayout
             android:id="@+id/linearRememberPassword"

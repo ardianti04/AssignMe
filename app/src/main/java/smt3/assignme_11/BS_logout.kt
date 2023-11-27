@@ -50,8 +50,10 @@ class BS_logout : BottomSheetDialogFragment(){
                             editor.putString("Email", "")
                             editor.putString("apiKey", "")
                             editor.apply()
-                            startActivity(Intent(requireContext(), LandingActivity::class.java))
-
+                            val landingIntent = Intent(requireContext(), LandingActivity::class.java)
+                            landingIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                            startActivity(landingIntent)
+                            activity?.finish()
                         } else Toast.makeText(requireContext(), response, Toast.LENGTH_SHORT).show()
                     }
                 }, object : Response.ErrorListener {

@@ -8,9 +8,7 @@
     app:cardBackgroundColor="@color/white"
     android:layout_marginTop="5dp"
     android:layout_gravity="center_horizontal"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="10dp"
-    android:layout_marginBottom="10dp">
+    app:cardCornerRadius="5dp">
 
     <RelativeLayout
         android:layout_width="match_parent"

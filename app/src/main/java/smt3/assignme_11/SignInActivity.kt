@@ -56,11 +56,9 @@ class SignInActivity : AppCompatActivity() {
         }
 
         //button back
-        val pressedColor = ContextCompat.getColor(this, R.color.black_900_7f)
         val backBtn = findViewById<ImageView>(R.id.backButtonImageLogin)
 
         backBtn.setOnClickListener {
-            backBtn.setColorFilter(pressedColor)
             val intent = Intent( this@SignInActivity, LandingActivity::class.java)
             startActivity(intent)
         }

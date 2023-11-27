@@ -40,16 +40,13 @@ class SignUpActivity : AppCompatActivity() {
 
         val linearLayout = findViewById<LinearLayout>(R.id.backButtonSignup)
         val imageView = findViewById<ImageView>(R.id.backButtonImageSignup)
-        val pressedColor = ContextCompat.getColor(this, R.color.gray)
 
         imageView.setOnClickListener {
-            imageView.setColorFilter(pressedColor)
             val intent = Intent( this@SignUpActivity, LandingActivity::class.java)
             startActivity(intent)
         }
 
         linearLayout.setOnClickListener {
-            imageView.setColorFilter(pressedColor)
             val intent = Intent( this@SignUpActivity, LandingActivity::class.java)
             startActivity(intent)
         }
@@ -98,7 +95,7 @@ class SignUpActivity : AppCompatActivity() {
                         override fun onResponse(response: String?) {
                             if (response.equals("success")){
                                 Toast.makeText(getApplicationContext(), "Register successful", Toast.LENGTH_SHORT).show()
-                                val intent = Intent(applicationContext, Main_Activity::class.java)
+                                val intent = Intent(applicationContext, SignInActivity::class.java)
                                 startActivity(intent)
                                 finish()
                             }

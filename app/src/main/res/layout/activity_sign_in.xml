@@ -287,7 +287,6 @@
                             android:text="@string/lbl_signup"
                             tools:text="@string/lbl_signup" />
                     </LinearLayout>
-
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
