@@ -29,10 +29,8 @@ class FP_1_enter_email : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fp1_enter_email)
 
-        val pressedColor = ContextCompat.getColor(this, R.color.black_900_7f)
         val backBtn = findViewById<ImageView>(R.id.backButtonFpEmail)
         backBtn.setOnClickListener {
-            backBtn.setColorFilter(pressedColor)
             val intent = Intent( this@FP_1_enter_email, SignInActivity::class.java)
             startActivity(intent)
         }
@@ -48,7 +46,7 @@ class FP_1_enter_email : AppCompatActivity() {
             if (email.isNotEmpty()){
 
                 if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                    txtError.text = "Format email tidak valid"
+                    txtError.text = resources.getString(R.string.lbl_emailFormatInvalid)
                     txtError.visibility = View.VISIBLE
                     return@setOnClickListener
                 }
@@ -80,7 +78,7 @@ class FP_1_enter_email : AppCompatActivity() {
                 stringRequest.retryPolicy
                 queue.add(stringRequest)
             }else {
-                Toast.makeText(applicationContext, "Kolom harus diisi", Toast.LENGTH_SHORT).show()
+                txtError.text = resources.getString(R.string.lbl_column_must_be_filled)
             }
         }
 

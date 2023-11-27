@@ -39,10 +39,8 @@ class FP_2_otp : AppCompatActivity() {
 
 
         //Back button func
-        val pressedColor = ContextCompat.getColor(this, R.color.black_900_7f)
         val backBtn = findViewById<ImageView>(R.id.backButtonFpOtp)
         backBtn.setOnClickListener {
-            backBtn.setColorFilter(pressedColor)
             val intent = Intent( this@FP_2_otp, FP_1_enter_email::class.java)
             startActivity(intent)
         }
@@ -60,7 +58,7 @@ class FP_2_otp : AppCompatActivity() {
 
             if (otp.isNotEmpty()) {
 
-                if (otp.length <4) {
+                if (otp.length <6) {
                     txtError.text = resources.getString(R.string.lbl_otpInvalid)
                     return@setOnClickListener
                 }
@@ -93,14 +91,7 @@ class FP_2_otp : AppCompatActivity() {
             }
         }
 
-        //Login text func
-        txtLogin = findViewById(R.id.txtLoginInFpOtp)
-        txtLogin.setTextColor(ContextCompat.getColorStateList(this, R.color.login_fp_email))
-        txtLogin.setOnClickListener {
-            val intent = Intent( this@FP_2_otp, SignInActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-            startActivity(intent)
-        }
+
 
     }
 }

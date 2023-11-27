@@ -18,7 +18,7 @@ import com.google.android.material.textfield.TextInputEditText
 
 class FP_3_resetpass : AppCompatActivity() {
     private lateinit var btnReset : Button
-    private lateinit var txtLogin : TextView
+    private lateinit var txtError : TextView
     private lateinit var editTextNewPassword : TextInputEditText
     private lateinit var editTextConfirmNewPassword : TextInputEditText
 
@@ -26,19 +26,13 @@ class FP_3_resetpass : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fp3_resetpass)
 
-        //Back button func
-        val pressedColor = ContextCompat.getColor(this, R.color.black_900_7f)
-        val backBtn = findViewById<ImageView>(R.id.backButtonFpReset)
-        backBtn.setOnClickListener {
-            backBtn.setColorFilter(pressedColor)
-            val intent = Intent( this@FP_3_resetpass, FP_2_otp::class.java)
-            startActivity(intent)
-        }
+
 
         val email = intent.getStringExtra("Email")
         //Reset button func
         editTextNewPassword = findViewById(R.id.newPassInputFP)
         editTextConfirmNewPassword = findViewById(R.id.confirmNewPassInputFP)
+        txtError = findViewById(R.id.txtError)
         btnReset = findViewById(R.id.btnResetPassword);
 
         btnReset.setOnClickListener {
@@ -52,7 +46,7 @@ class FP_3_resetpass : AppCompatActivity() {
             if (password.isNotEmpty() && confirmPassword.isNotEmpty()) {
 
                 if (password.length < 8) {
-                    Toast.makeText(applicationContext, "Password harus minimal 8 karakter", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Password must be 8 characters minimum", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
                 if (password != confirmPassword) {
@@ -70,7 +64,7 @@ class FP_3_resetpass : AppCompatActivity() {
                                 val intent = Intent(this@FP_3_resetpass, FP_4_status::class.java)
                                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                 startActivity(intent)
-                            } else Toast.makeText(applicationContext, response, Toast.LENGTH_SHORT).show()
+                            } else txtError.text = response
                         }
                     }, object : Response.ErrorListener {
                         override fun onErrorResponse(error: VolleyError) {
@@ -87,15 +81,11 @@ class FP_3_resetpass : AppCompatActivity() {
                 queue.add(stringRequest)
             }
         }
+    }
 
-        //Login text func
-        txtLogin = findViewById(R.id.txtLoginInFpReset)
-        txtLogin.setTextColor(ContextCompat.getColorStateList(this, R.color.login_fp_email))
-        txtLogin.setOnClickListener {
-            val intent = Intent( this@FP_3_resetpass, SignInActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-            startActivity(intent)
-            finish()
-        }
+    override fun onBackPressed() {
+        // Biarkan default behavior onBackpressed terjadi
+        // Hilangkan pemanggilan super.onBackPressed() atau navigasi kembali di sini
+        // Jika ingin membatasi perilaku kembali, Anda bisa menambahkan logika di sini
     }
 }
