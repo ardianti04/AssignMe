@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -39,21 +40,13 @@ import org.json.JSONObject
 
 
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [Fragment_4_setting.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Fragment_4_setting : Fragment() {
 
     private lateinit var txtNama: TextView
     private lateinit var txtEmail: TextView
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var editProfile: RelativeLayout
 
 //    private lateinit var viewModel: MyViewModel
     // TODO: Rename and change types of parameters
@@ -65,8 +58,7 @@ class Fragment_4_setting : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
         }
     }
 
@@ -80,13 +72,14 @@ class Fragment_4_setting : Fragment() {
         txtNama = view.findViewById(R.id.txtNama)
         txtEmail=view.findViewById(R.id.txtEmail)
 
-        val btnMasukChangePassword = view.findViewById<ImageButton>(R.id.btnMasukChangePassword)
 
-        btnMasukChangePassword.setOnClickListener {
-            val intent = Intent(context, FP_3_resetpass::class.java)
+
+        editProfile = view.findViewById(R.id.relativeEditProfile)
+        editProfile.setOnClickListener {
+            val intent = Intent(context, EditProfile::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
         }
-
 
         // Temukan tombol logout
         val btnLogout = view.findViewById<AppCompatButton>(R.id.btnLogOut)
@@ -98,7 +91,7 @@ class Fragment_4_setting : Fragment() {
             bottomSheetFragment.setStyle(BottomSheetDialogFragment.STYLE_NORMAL, R.style.CustomTransparentBottomSheet)
             bottomSheetFragment.show(parentFragmentManager, bottomSheetFragment.tag)
         }
-        tampilkanDataSetting()
+
         return view
     }
 
@@ -145,30 +138,24 @@ class Fragment_4_setting : Fragment() {
                 paramV["Email"] = sharedPreferences.getString("Email", "")
                 paramV["apiKey"] = sharedPreferences.getString("apiKey", "")
                 paramV["Username"] = sharedPreferences.getString("Username", "")
-                //paramV["Username"] = sharedPreferences.getString("Username", "")
                 return paramV
             }
         }
         queue.add(stringRequest)
     }
+    override fun onResume() {
+        super.onResume()
+        tampilkanDataSetting()
+    }
 
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Fragment_4_setting.
-         */
-        // TODO: Rename and change types and number of parameters
+
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             Fragment_4_setting().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+
                 }
             }
     }
