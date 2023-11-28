@@ -10,19 +10,18 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.Request
 import com.android.volley.RequestQueue
-import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
 import com.android.volley.toolbox.Volley.newRequestQueue
 import org.json.JSONException
 import org.json.JSONObject
+import java.util.Locale
 
 
 class Fragment_1_home : Fragment() {
@@ -31,6 +30,8 @@ class Fragment_1_home : Fragment() {
     private lateinit var adapter: ClassRViewAdapter
     private lateinit var btnTambah: ImageButton
     private lateinit var txtName: TextView
+    private lateinit var search:SearchView
+    private lateinit var joinedClassesArrayList:ArrayList<Kelas>
     private lateinit var sharedPreferences: SharedPreferences
 
 
@@ -55,7 +56,7 @@ class Fragment_1_home : Fragment() {
 
         txtName = view.findViewById(R.id.txtName)
 
-        val btnTambah = view.findViewById<ImageButton>(R.id.btnTambah)
+        btnTambah = view.findViewById<ImageButton>(R.id.btnTambah)
         val pressedColor = ContextCompat.getColor(requireContext(), R.color.black_900_7f)
         btnTambah.setOnClickListener {
             btnTambah.setColorFilter(pressedColor)
@@ -72,6 +73,20 @@ class Fragment_1_home : Fragment() {
         nama()
         getJoinedClasses()
 
+        // Inisialisasi SearchView
+        search = view.findViewById<SearchView>(R.id.search)
+        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let {
+                    performSearch(it)
+                }
+                return true
+            }
+        })
         return view
 
     }
@@ -145,7 +160,7 @@ class Fragment_1_home : Fragment() {
 
     // Fungsi untuk menampilkan daftar kelas yang telah di-join menggunakan RecyclerView
     private fun showJoinedClasses(joinedClasses: ArrayList<Kelas>) {
-        val joinedClassesArrayList = ArrayList(joinedClasses)
+        joinedClassesArrayList = ArrayList(joinedClasses)
         adapter.setKelas(joinedClassesArrayList)
         adapter.notifyDataSetChanged()
         classRecView.visibility = View.VISIBLE
@@ -153,6 +168,22 @@ class Fragment_1_home : Fragment() {
             // Handle UI jika tidak ada kelas yang di-join
         }
     }
+
+    private fun performSearch(query: String) {
+        val filteredList = ArrayList<Kelas>()
+        val lowerCaseQuery = query.lowercase(Locale.ROOT)
+        for (kelas in joinedClassesArrayList) {
+            if (kelas.nama_kelas.lowercase(Locale.ROOT).contains(lowerCaseQuery) ||
+                kelas.nama_mapel.lowercase(Locale.ROOT).contains(lowerCaseQuery)
+            ) {
+                filteredList.add(kelas)
+            }
+        }
+        adapter.setKelas(filteredList)
+        adapter.notifyDataSetChanged()
+    }
+
+
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
