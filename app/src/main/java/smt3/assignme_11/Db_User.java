@@ -1,7 +1,7 @@
 package smt3.assignme_11;
 
 public class Db_User {
-    public static String ip="10.10.181.144";
+    public static String ip="10.10.185.144";
 
     public static final String urlLogin="http://"+ip+"/assignmeAPI/login.php";
     //public static final String urlLogin="http://"+ip+"/retrofit/login.php";
@@ -14,7 +14,7 @@ public class Db_User {
     public static final String urlNewPassword="http://"+ip+"/assignmeAPI/newPassword.php";
     public static final String urlSetting="http://"+ip+"/assignmeAPI/setting.php";
     public static final String urlChangeUsername="http://"+ip+"/assignmeAPI/editUsername.php";
-    public static final String urlRecViewHome="http://"+ip+"/assignmeAPI/recyViewHome.php";
+    public static final String urlShowTodo="http://"+ip+"/assignmeAPI/showTodo.php";
     public static final String urlJoinClass="http://"+ip+"/assignmeAPI/joinClass.php";
     public static final String urlShowJoinedClass="http://"+ip+"/assignmeAPI/showJoinedClass.php";
 
