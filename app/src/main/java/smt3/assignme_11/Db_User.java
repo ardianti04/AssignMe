@@ -19,7 +19,6 @@ public class Db_User {
     public static final String urlShowJoinedClass="http://"+ip+"/assignmeAPI/showJoinedClass.php";
     public static final String urlshowComplateAndOnTime="http://"+ip+"/assignmeAPI/showComplateAndOnTime.php";
     public static final String urlshowComplateAndLate="http://"+ip+"/assignmeAPI/showComplateAndLate.php";
-    public static final String urlshownotCollectedAndLate="http://"+ip+"/assignmeAPI/notCollectedAndLate.php";
 
 
 
