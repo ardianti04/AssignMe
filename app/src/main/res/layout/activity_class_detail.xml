@@ -50,44 +50,59 @@
         android:background="@drawable/elips_rectangle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/backButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="20dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/baseline_arrow_back_ios_white_new_24"
-            app:layout_constraintEnd_toStartOf="@+id/txtNamakelas"
+        <RelativeLayout
+            android:id="@+id/relative1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <TextView
-            android:id="@+id/txtNamakelas"
-            android:layout_width="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/baseline_arrow_back_ios_white_new_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative2"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Kelas XII E"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.229"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="vertical"
+            app:layout_constraintStart_toEndOf="@+id/relative1"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/txtNamaMapel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:text="Matematika"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/txtNamakelas"
-            app:layout_constraintStart_toStartOf="@+id/txtNamakelas"
-            app:layout_constraintTop_toBottomOf="@+id/txtNamakelas" />
+            <TextView
+                android:id="@+id/txtNamakelas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:text="IPA IPA IPA "
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:singleLine="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.229" />
+
+            <TextView
+                android:id="@+id/txtNamaMapelDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MATEMATIKA"
+                android:layout_below="@+id/txtNamakelas"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:ellipsize="end"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

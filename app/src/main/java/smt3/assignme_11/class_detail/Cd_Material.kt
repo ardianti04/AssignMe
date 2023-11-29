@@ -9,27 +9,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
+import org.json.JSONException
+import smt3.assignme_11.Db_User
 import smt3.assignme_11.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [Cd_Material.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Cd_Material : Fragment() {
     private lateinit var materialRecView: RecyclerView
     private lateinit var adapter: MaterialRecViewAdapter
     private lateinit var sharedPreferences: SharedPreferences
-
-
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,51 +35,43 @@ class Cd_Material : Fragment() {
 
         adapter = MaterialRecViewAdapter(requireContext())
         materialRecView.adapter = adapter
-
-        val materi = getMateriData()
-        adapter.setMateris(materi)
+        val classId = 1
+        getMateriData(classId)
 
         return view
 
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Cd_Task.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Cd_Task().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+
+    fun getMateriData(classId: Int) {
+        val requestQueue = Volley.newRequestQueue(requireContext())
+        val url = Db_User.urlShowMaterial
+
+        val stringRequest = JsonObjectRequest(
+            Request.Method.POST, url, null,
+            { response ->
+                try {
+                    val jsonArray = response.getJSONArray("materials") // Sesuaikan dengan respons dari API
+                    val materiList = ArrayList<Materi>()
+
+                    for (i in 0 until jsonArray.length()) {
+                        val jsonObject = jsonArray.getJSONObject(i)
+                        val idMateri = jsonObject.getInt("id_Materi")
+                        val namaMateri = jsonObject.getString("nama_Materi")
+                        val tanggalUpload = jsonObject.getString("tanggal_upload")
+
+                        val materi = Materi(idMateri, namaMateri, tanggalUpload)
+                        materiList.add(materi)
+                    }
+
+                    // Set data to RecyclerView adapter
+                    adapter.setMateris(materiList)
+                } catch (e: JSONException) {
+                    e.printStackTrace()
                 }
-            }
-    }
+            },
+            { error -> error.printStackTrace() })
 
-    fun getMateriData(): ArrayList<Materi>? {
-        val materi = ArrayList<Materi>()
-        materi.add(
-            Materi(
-                1,
-                "Matematika Diskrit",
-                "6 Juni 2023"
-            )
-        )
-        materi.add(
-            Materi(
-                2,
-                "Limit",
-                "7 Juni 2023"
-            )
-        )
-
-        return materi
+        requestQueue.add(stringRequest)
     }
 }

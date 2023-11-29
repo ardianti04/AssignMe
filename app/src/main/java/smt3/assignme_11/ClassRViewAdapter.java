@@ -41,23 +41,23 @@ public class ClassRViewAdapter extends RecyclerView.Adapter<ClassRViewAdapter.Vi
         return new ViewHolder(view);
     }
 
-    @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: Called");
-        holder.txtNamakelas.setText(kelas.get(holder.getBindingAdapterPosition()).getNama_kelas());
-        holder.txtNamaMapel.setText(kelas.get(holder.getBindingAdapterPosition()).getNama_mapel());
+        Kelas currentKelas = kelas.get(position);
 
+        holder.txtNamakelas.setText(currentKelas.getNama_kelas());
+        holder.txtNamaMapel.setText(currentKelas.getNama_mapel());
 
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, kelas.get(holder.getBindingAdapterPosition()).getNama_kelas()+" Selected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, currentKelas.getId_kelas() + " Selected", Toast.LENGTH_SHORT).show();
 
                 FragmentManager fragmentManager = ((AppCompatActivity) mContext).getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-
                 Intent intent = new Intent(mContext, CLass_Detail.class);
+                intent.putExtra("ClassId", currentKelas.getId_kelas());
                 mContext.startActivity(intent);
             }
         });

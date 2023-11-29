@@ -8,6 +8,8 @@ public class Kelas  {
     private String nama_mapel;
     private String dekripsi;
     private String imageUrl;
+    private int classId;
+    private String className;
 
     public Kelas(int id_kelas, String nama_kelas, String kode_kelas, String nama_guru, String nama_mapel, String dekripsi) {
         this.id_kelas = id_kelas;
@@ -16,6 +18,7 @@ public class Kelas  {
         this.nama_guru = nama_guru;
         this.nama_mapel = nama_mapel;
         this.dekripsi = dekripsi;
+
         //this.imageUrl = imageUrl;
     }
 
