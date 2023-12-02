@@ -96,6 +96,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"/>
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/relativeUsernameClick"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="30dp"
@@ -140,10 +141,54 @@
                     app:layout_constraintVertical_bias="0.6"
                     tools:ignore="ContentDescription" />
             </RelativeLayout>
-
         </RelativeLayout>
 
+        <RelativeLayout
+            android:id="@+id/relativeGenderClick"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintTop_toBottomOf="@id/relativeUsernameClick">
+            <TextView
+                android:id="@+id/lblGender"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/gender"
+                android:textColor="@color/black"
+                android:singleLine="true"
+                android:textSize="15sp"
+                android:layout_centerVertical="true"/>
+            <RelativeLayout
+                android:id="@+id/relativeGender"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/lblGender"
+                app:layout_constraintBottom_toBottomOf="@+id/lblGender"
+                app:layout_constraintStart_toEndOf="@+id/lblGender">
+                <TextView
+                    android:id="@+id/txtGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text=""
+                    style="@style/txtInterregular14b3"
+                    app:layout_constraintVertical_bias="1.0" />
+                <ImageView
+                    android:id="@+id/forwardArrowGender"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:scaleType="fitXY"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:backgroundTint="@color/white"
+                    android:src="@drawable/baseline_arrow_forward_ios_24"
+                    app:layout_constraintVertical_bias="0.6"
+                    tools:ignore="ContentDescription" />
+            </RelativeLayout>
+        </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -75,4 +75,9 @@ then enter the code below.</string>
     <string name="profile_info">Profile info</string>
     <string name="code_cannot_be_empty">Code cannot be empty</string>
     <string name="code_must_be_6_characters">Code must be 6 characters</string>
+    <string name="gender">Gender</string>
+    <string name="pick_a_gender">Pick a gender</string>
+    <string name="male">Laki-Laki</string>
+    <string name="female">Perempuan</string>
+    <string name="select_your_gender_this_will_be_displayed_only_to_you">Select your gender. This will be displayed only to you.</string>
 </resources>
