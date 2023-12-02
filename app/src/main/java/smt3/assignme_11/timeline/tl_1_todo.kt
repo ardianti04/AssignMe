@@ -18,6 +18,8 @@ import org.json.JSONObject
 import smt3.assignme_11.Db_User
 import smt3.assignme_11.R
 import smt3.assignme_11.class_detail.Tugas
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class tl_1_todo : Fragment() {
@@ -47,8 +49,6 @@ class tl_1_todo : Fragment() {
         adapter = TodoRecViewAdapter(requireContext())
         todoRecView.adapter = adapter
 
-//        val tugas = getTaskData()
-//        adapter.setTugas(tugas)
         getTasksFromServer()
 
         return view
@@ -101,14 +101,16 @@ class tl_1_todo : Fragment() {
                 val taskId = taskObj.getInt("TaskId")
                 val taskName = taskObj.getString("TaskName")
                 val taskDesc = taskObj.getString("TaskDesc")
-                val dueDate = taskObj.getString("DueDate")
+                val dueDateStr  = taskObj.getString("DueDate")
+
+                val formattedDate  = formatDate(dueDateStr)
 
                 // Create Kelas object and add to the list
                 val tugas = Tugas(
                     taskId,
                     taskName,
                     taskDesc,
-                    dueDate
+                    formattedDate
                 )
                 taskClasses.add(tugas)
             }
@@ -130,27 +132,10 @@ class tl_1_todo : Fragment() {
             // Handle UI jika tidak ada kelas yang di-join
         }
     }
+    private fun formatDate(dateStr: String): String {
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        val outputFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
+        val date = inputFormat.parse(dateStr)
+        return outputFormat.format(date)
+    }
 }
-
-//    fun getTaskData(): ArrayList<Tugas>? {
-//        val tugas = ArrayList<Tugas>()
-//        tugas.add(
-//            Tugas(
-//                1,
-//                "Matematika",
-//                "Tugas Mencatat",
-//                "6 Juni 2023",
-//            )
-//        )
-//        tugas.add(
-//            Tugas(
-//                2,
-//                "Bahasa indonesia",
-//                "Tugas Mencatat",
-//                "7 Juni 2023"
-//            )
-//        )
-
-//        return tugas
-//    }
-//}

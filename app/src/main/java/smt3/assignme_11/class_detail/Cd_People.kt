@@ -2,6 +2,7 @@ package smt3.assignme_11.class_detail
 
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,10 +29,16 @@ class Cd_People : Fragment() {
     private lateinit var studentAdapter: PeopleRecViewAdapter
     private lateinit var sharedPreferences: SharedPreferences
 
-
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    companion object {
+        fun newInstance(classId: Int): Cd_Task {
+            val fragment = Cd_Task()
+            val args = Bundle()
+            args.putInt("ClassId", classId)
+            fragment.arguments = args
+            Log.d("Cd_Task", "ClassId in newInstance: $classId")
+            return fragment
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -63,25 +70,6 @@ class Cd_People : Fragment() {
 
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Cd_People.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Cd_People().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
     fun getTeacherData(): ArrayList<User>? {
         val teacherData = ArrayList<User>()
         teacherData.add(

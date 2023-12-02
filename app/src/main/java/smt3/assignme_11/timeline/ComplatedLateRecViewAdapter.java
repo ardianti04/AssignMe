@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -40,6 +41,18 @@ public class ComplatedLateRecViewAdapter extends RecyclerView.Adapter<ComplatedL
         holder.txtDeskripsiTugas.setText(tugas.get(holder.getBindingAdapterPosition()).getDeskripsi_tugas());
         holder.txtNamaMapel.setText(tugas.get(holder.getBindingAdapterPosition()).getNama_mapel());
         holder.txtTglBerakhir.setText(tugas.get(holder.getBindingAdapterPosition()).getTgl_berakhir());
+
+
+        holder.parent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(mContext, tugas.get(holder.getBindingAdapterPosition()).getId_Tugas()+" Selected", Toast.LENGTH_SHORT).show();
+
+
+//                Intent intent = new Intent(mContext, Detail_Tugas.class);
+//                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override

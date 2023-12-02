@@ -8,16 +8,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.SearchView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Request
 import com.android.volley.RequestQueue
+import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.android.volley.toolbox.Volley.newRequestQueue
 import org.json.JSONException
 import org.json.JSONObject
@@ -30,9 +33,9 @@ class Fragment_1_home : Fragment() {
     private lateinit var adapter: ClassRViewAdapter
     private lateinit var btnTambah: ImageButton
     private lateinit var txtName: TextView
-    private lateinit var search:SearchView
-    private lateinit var joinedClassesArrayList:ArrayList<Kelas>
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var search: androidx.appcompat.widget.SearchView
+    private lateinit var joinedClassesArrayList:ArrayList<Kelas>
 
 
 
@@ -70,12 +73,8 @@ class Fragment_1_home : Fragment() {
         adapter = ClassRViewAdapter(requireContext())
         classRecView.adapter = adapter
 
-        nama()
-        getJoinedClasses()
-
-        // Inisialisasi SearchView
-        search = view.findViewById<SearchView>(R.id.search)
-        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        search = view.findViewById(R.id.search)
+        search.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
@@ -87,6 +86,10 @@ class Fragment_1_home : Fragment() {
                 return true
             }
         })
+
+        nama()
+        getJoinedClasses()
+
         return view
 
     }
@@ -168,7 +171,6 @@ class Fragment_1_home : Fragment() {
             // Handle UI jika tidak ada kelas yang di-join
         }
     }
-
     private fun performSearch(query: String) {
         val filteredList = ArrayList<Kelas>()
         val lowerCaseQuery = query.lowercase(Locale.ROOT)
@@ -182,10 +184,6 @@ class Fragment_1_home : Fragment() {
         adapter.setKelas(filteredList)
         adapter.notifyDataSetChanged()
     }
-
-
-
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -197,7 +195,6 @@ class Fragment_1_home : Fragment() {
             }
         }
     }
-
     private fun nama() {
         val queue: RequestQueue = newRequestQueue(requireContext())
         val url = Db_User.urlProfile
@@ -206,8 +203,21 @@ class Fragment_1_home : Fragment() {
             com.android.volley.Request.Method.POST, url,
             object : com.android.volley.Response.Listener<String?> {
                 override fun onResponse(response: String?) {
-                    val username = response?.replace("\"", "") // Menghapus tanda petik ganda
-                    txtName.text = username
+                    try {
+                        val jsonResult = JSONObject(response)
+                        val status = jsonResult.getString("status")
+
+                        if (status == "Success") {
+                            val userData = jsonResult.getJSONObject("data")
+                            val username = userData.getString("Username")
+                            val gender = userData.getString("Gender")
+                            txtName.text = username
+                        } else {
+                            // Handle failed response
+                        }
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                    }
                 }
             }, object : com.android.volley.Response.ErrorListener {
                 override fun onErrorResponse(error: VolleyError) {
@@ -218,36 +228,10 @@ class Fragment_1_home : Fragment() {
                 val paramV: MutableMap<String, String?> = HashMap()
                 paramV["Email"] = sharedPreferences.getString("Email", "")
                 paramV["apiKey"] = sharedPreferences.getString("apiKey", "")
-                paramV["Username"] = sharedPreferences.getString("Username", "")
+                //paramV["Username"] = sharedPreferences.getString("Username", "")
                 return paramV
             }
         }
         queue.add(stringRequest)
-        }
-
-
-    /*fun getClassData(): ArrayList<Kelas>? {
-        val kelas = ArrayList<Kelas>()
-        kelas.add(
-            Kelas(
-                1,
-                "Kelas XII E",
-                "E234",
-                "Citra Kirana",
-                "Matematika",
-                "Kelas untuk siswa ini saja"
-            )
-        )
-        kelas.add(
-            Kelas(
-                2,
-                "Kelas XII A",
-                "A234",
-                "Lusiana",
-                "IPA",
-                "Kelas untuk siswa ini saja"
-            )
-        )
-        return kelas
-    }*/
+    }
 }
