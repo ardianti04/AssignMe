@@ -60,6 +60,7 @@ class SignInActivity : AppCompatActivity() {
 
         backBtn.setOnClickListener {
             val intent = Intent( this@SignInActivity, LandingActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
         }
 
@@ -93,10 +94,10 @@ class SignInActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext, "Format email tidak valid", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
-                if (password.length < 8) {
-                    Toast.makeText(applicationContext, "Password harus minimal 8 karakter", Toast.LENGTH_SHORT).show()
-                    return@setOnClickListener
-                }
+                //if (password.length < 8) {
+                //    Toast.makeText(applicationContext, "Password harus minimal 8 karakter", Toast.LENGTH_SHORT).show()
+                //    return@setOnClickListener
+                //}
 
                 val queue: RequestQueue = Volley.newRequestQueue(this)
                 val url = Db_User.urlLogin

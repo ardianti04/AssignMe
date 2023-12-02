@@ -116,6 +116,14 @@
             android:textAllCaps="false"
             style="@style/btnSolidRounded" />
 
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_marginTop="10dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
         <TextView
             android:id="@+id/txtError"
             style="@style/txtInterregular14red"
@@ -123,7 +131,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
             android:layout_marginEnd="@dimen/_10pxh"
             android:ellipsize="end"
             android:singleLine="true"
