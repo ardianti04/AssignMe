@@ -10,24 +10,17 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.viewpager2.widget.ViewPager2
-import com.android.volley.Response
 import com.android.volley.VolleyError
-import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.google.android.material.tabs.TabLayoutMediator
 import org.json.JSONException
 import org.json.JSONObject
 import smt3.assignme_11.Db_User
 import smt3.assignme_11.Main_Activity
 import smt3.assignme_11.R
-import smt3.assignme_11.timeline.tl_1_todo
-import smt3.assignme_11.timeline.tl_2_completed
-import smt3.assignme_11.timeline.tl_3_overdue
 
 class CLass_Detail : AppCompatActivity() {
     private lateinit var containerF: FrameLayout

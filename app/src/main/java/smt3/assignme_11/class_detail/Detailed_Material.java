@@ -1,4 +1,4 @@
-package smt3.assignme_11;
+package smt3.assignme_11.class_detail;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import smt3.assignme_11.class_detail.CLass_Detail;
+import smt3.assignme_11.R;
 
 public class Detailed_Material extends AppCompatActivity {
     ImageView backButton;

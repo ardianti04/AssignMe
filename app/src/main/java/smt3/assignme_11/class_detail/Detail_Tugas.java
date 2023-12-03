@@ -1,4 +1,4 @@
-package smt3.assignme_11;
+package smt3.assignme_11.class_detail;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import smt3.assignme_11.R;
-import smt3.assignme_11.class_detail.CLass_Detail;
 
 public class Detail_Tugas extends AppCompatActivity {
     ImageView backButton;

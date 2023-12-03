@@ -32,10 +32,10 @@
             android:name=".JoinClassActivity"
             android:exported="false" />
         <activity
-            android:name=".Detail_Tugas"
+            android:name=".class_detail.Detail_Tugas"
             android:exported="false" />
         <activity
-            android:name=".Detailed_Material"
+            android:name=".class_detail.Detailed_Material"
             android:exported="false" />
         <activity
             android:name=".class_detail.CLass_Detail"
