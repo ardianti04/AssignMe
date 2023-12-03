@@ -47,7 +47,7 @@ public class TodoRecViewAdapter extends RecyclerView.Adapter<TodoRecViewAdapter.
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, tugas.get(holder.getBindingAdapterPosition()).getNama_mapel()+" Selected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, tugas.get(holder.getBindingAdapterPosition()).getId_Tugas()+" Selected", Toast.LENGTH_SHORT).show();
 
 
 //                Intent intent = new Intent(mContext, Detail_Tugas.class);

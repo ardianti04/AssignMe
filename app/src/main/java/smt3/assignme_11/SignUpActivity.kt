@@ -43,14 +43,15 @@ class SignUpActivity : AppCompatActivity() {
 
         imageView.setOnClickListener {
             val intent = Intent( this@SignUpActivity, LandingActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
         }
 
         linearLayout.setOnClickListener {
             val intent = Intent( this@SignUpActivity, LandingActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
         }
-
 
         textInputName = findViewById(R.id.nameInputSignup);
         textInputEmail = findViewById(R.id.emailInputSignup);
@@ -98,11 +99,12 @@ class SignUpActivity : AppCompatActivity() {
                                 val intent = Intent(applicationContext, SignInActivity::class.java)
                                 startActivity(intent)
                                 finish()
+                            } else {
+                                Toast.makeText(applicationContext, response, Toast.LENGTH_SHORT).show()
                             }
                         }
                     }, object : Response.ErrorListener {
                         override fun onErrorResponse(error: VolleyError?) {
-
                         }
                     }) {
                     override fun getParams(): Map<String, String> {

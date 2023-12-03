@@ -35,7 +35,6 @@ class LandingActivity : AppCompatActivity() {
         }
 
     }
-
     override fun onStart() {
         super.onStart()
         sharedPreferences = getSharedPreferences("MyAppName", MODE_PRIVATE)

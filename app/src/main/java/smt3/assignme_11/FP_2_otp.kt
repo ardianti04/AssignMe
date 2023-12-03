@@ -42,6 +42,7 @@ class FP_2_otp : AppCompatActivity() {
         val backBtn = findViewById<ImageView>(R.id.backButtonFpOtp)
         backBtn.setOnClickListener {
             val intent = Intent( this@FP_2_otp, FP_1_enter_email::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
         }
 
@@ -69,6 +70,7 @@ class FP_2_otp : AppCompatActivity() {
                     Request.Method.POST, url,
                     object : Response.Listener<String?> {
                         override fun onResponse(response: String?) {
+                            Log.d("Response_Debug", "Raw Response: $response")
                             if (response.equals("success")) {
                                 val intent = Intent(this@FP_2_otp, FP_3_resetpass::class.java)
                                 intent.putExtra("Email", email)

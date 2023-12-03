@@ -2,6 +2,7 @@ package smt3.assignme_11.timeline
 
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +20,8 @@ import org.json.JSONObject
 import smt3.assignme_11.Db_User
 import smt3.assignme_11.R
 import smt3.assignme_11.class_detail.Tugas
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class tl_2_completed : Fragment() {
 
@@ -31,10 +34,6 @@ class tl_2_completed : Fragment() {
     private lateinit var sharedPreferences: SharedPreferences
 
 
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,7 +42,8 @@ class tl_2_completed : Fragment() {
         val view = inflater.inflate(R.layout.fragment_tl_2_completed, container, false)
         sharedPreferences =
             requireContext().getSharedPreferences("MyAppName", AppCompatActivity.MODE_PRIVATE)
-
+        val userEmail = sharedPreferences.getString("Email", "")
+        Log.d("Email_Debug", "User Email: $userEmail")
 
         completedRecView = view.findViewById<RecyclerView?>(R.id.completedRecView)
         completedRecView.layoutManager = LinearLayoutManager(requireContext())
@@ -62,12 +62,13 @@ class tl_2_completed : Fragment() {
     }
     private fun getTasksOnTimeFromServer() {
         val queue: RequestQueue = Volley.newRequestQueue(requireContext())
-        val url = Db_User.urlshowComplateAndOnTime
+        val url = Db_User.urlshowCompletedAndOnTime
 
         val stringRequest: StringRequest = object : StringRequest(
             com.android.volley.Request.Method.POST, url,
             object : com.android.volley.Response.Listener<String?> {
                 override fun onResponse(response: String?) {
+                    Log.d("Response_Debug", "Raw Response: $response")
                     response?.let {
                         if (it.isNotEmpty()) {
                             val taskOnTime = parseTaskOnTime(it)
@@ -107,14 +108,16 @@ class tl_2_completed : Fragment() {
                 val taskId = taskObj.getInt("TaskId")
                 val taskName = taskObj.getString("TaskName")
                 val taskDesc = taskObj.getString("TaskDesc")
-                val dueDate = taskObj.getString("DueDate")
+                val dueDateStr = taskObj.getString("DueDate")
+
+                val formattedDate  = formatDate(dueDateStr)
 
                 // Create Kelas object and add to the list
                 val tugas = Tugas(
                     taskId,
                     taskName,
                     taskDesc,
-                    dueDate
+                    formattedDate
                 )
                 taskOnTime.add(tugas)
             }
@@ -138,13 +141,14 @@ class tl_2_completed : Fragment() {
     }
     private fun getTasksLateFromServer() {
         val queue: RequestQueue = Volley.newRequestQueue(requireContext())
-        val url = Db_User.urlshowComplateAndLate
+        val url = Db_User.urlshowCompletedAndLate
 
         val stringRequest: StringRequest = object : StringRequest(
             com.android.volley.Request.Method.POST, url,
             object : com.android.volley.Response.Listener<String?> {
                 override fun onResponse(response: String?) {
                     response?.let {
+                        Log.d("Response_Debug", "Raw Response: $response")
                         if (it.isNotEmpty()) {
                             val taskLate = parseTaskOnTime(it)
                             showTaskLateClasses(taskLate)
@@ -183,14 +187,16 @@ class tl_2_completed : Fragment() {
                 val taskId = taskObj.getInt("TaskId")
                 val taskName = taskObj.getString("TaskName")
                 val taskDesc = taskObj.getString("TaskDesc")
-                val dueDate = taskObj.getString("DueDate")
+                val dueDateStr = taskObj.getString("DueDate")
+
+                val formattedDate  = formatDate(dueDateStr)
 
                 // Create Kelas object and add to the list
                 val tugas = Tugas(
                     taskId,
                     taskName,
                     taskDesc,
-                    dueDate
+                    formattedDate
                 )
                 taskLate.add(tugas)
             }
@@ -212,26 +218,11 @@ class tl_2_completed : Fragment() {
             // Handle UI jika tidak ada kelas yang di-join
         }
     }
+
+    private fun formatDate(dateStr: String): String {
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        val outputFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
+        val date = inputFormat.parse(dateStr)
+        return outputFormat.format(date)
+    }
 }
-//    fun getTaskData(): ArrayList<Tugas>? {
-//        val tugas = ArrayList<Tugas>()
-//        tugas.add(
-//            Tugas(
-//                1,
-//                "Matematika",
-//                "Tugas Mencatat",
-//                "6 Juni 2023",
-//            )
-//        )
-//        tugas.add(
-//            Tugas(
-//                2,
-//                "Bahasa indonesia",
-//                "Tugas Mencatat",
-//                "7 Juni 2023"
-//            )
-//        )
-//
-//        return tugas
-//    }
-//}

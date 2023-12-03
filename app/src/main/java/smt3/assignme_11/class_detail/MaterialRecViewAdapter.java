@@ -62,7 +62,7 @@ public class MaterialRecViewAdapter extends RecyclerView.Adapter<MaterialRecView
         return materis.size();
     }
 
-    public void setMateris(ArrayList<Materi> materis) {
+    public void setMaterial(ArrayList<Materi> materis) {
         this.materis = materis;
         notifyDataSetChanged();
     }

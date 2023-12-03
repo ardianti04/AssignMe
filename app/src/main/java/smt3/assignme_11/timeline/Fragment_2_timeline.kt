@@ -60,12 +60,12 @@ class Fragment_2_timeline : Fragment() {
         return view
     }
 
-    private fun showFragment(fragment: Fragment): Fragment {
+    /*private fun showFragment(fragment: Fragment): Fragment {
         val transaction = childFragmentManager.beginTransaction()
         transaction.replace(R.id.containerFragment, fragment)
         transaction.commit()
         return fragment
-    }
+    }*/
 
     // Adapter ViewPager
     private inner class TimelineFragmentStateAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
