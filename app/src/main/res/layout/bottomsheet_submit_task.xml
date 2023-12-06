@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_bg_submit_task">
+
+    <ImageView
+        android:id="@+id/imageViewCenter"
+        android:layout_width="80dp"
+        android:layout_height="5dp"
+        android:src="@drawable/round_remove_24"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/txtYourWork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/navy"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/your_work" />
+
+    <TextView
+        android:id="@+id/txtStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="10dp"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/navy"
+        android:textSize="15sp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:layout_alignTop="@id/imageViewCenter"
+        android:layout_toEndOf="@id/imageViewCenter"
+        android:text="Handed In" />
+    <TextView
+        android:id="@+id/txtLate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:textColor="@color/gray_600"
+        android:textSize="11sp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:layout_below="@+id/txtStatus"
+        android:layout_toEndOf="@id/imageViewCenter"
+        android:text="Done Late" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtYourWork"
+        android:layout_marginTop="30dp">
+
+        <RelativeLayout
+            android:id="@+id/relativeAttachment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/detail_column">
+
+            <TextView
+                android:id="@+id/textAttachment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/navy"
+                android:text="@string/attachments"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/attachment_student"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textAttachment"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="10dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relativeAttachment"
+            android:layout_marginTop="50dp">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnHandIn"
+                style="@style/etRoundedOutlineBlack"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:textColor="@color/navy"
+                android:visibility="invisible"
+                android:text="@string/hand_in"
+                android:textAllCaps="false" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnUnsubmit"
+                style="@style/etRoundedOutlineBlack"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:layout_below="@+id/btnHandIn"
+                android:visibility="invisible"
+                android:text="@string/unsubmit"
+                android:textColor="@color/navy"
+                android:textAllCaps="false" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnAddwork"
+                style="@style/btnSolidRoundedDialog3"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:layout_below="@+id/btnHandIn"
+                android:text="@string/add_work"
+                android:textAllCaps="false" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>
