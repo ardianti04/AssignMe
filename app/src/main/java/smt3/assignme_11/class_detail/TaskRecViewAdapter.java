@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import smt3.assignme_11.task_detail.Detail_Tugas;
 import smt3.assignme_11.R;
 
 
@@ -38,24 +39,30 @@ public class TaskRecViewAdapter extends RecyclerView.Adapter<TaskRecViewAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: Called");
-        holder.txtDeskripsiTugas.setText(tugas.get(holder.getBindingAdapterPosition()).getDeskripsi_tugas());
-        holder.txtNamaMapel.setText(tugas.get(holder.getBindingAdapterPosition()).getNama_mapel());
-        holder.txtTglBerakhir.setText(tugas.get(holder.getBindingAdapterPosition()).getTgl_berakhir());
+        Tugas currentTugas = tugas.get(position);
 
+        holder.txtDeskripsiTugas.setText(currentTugas.getDeskripsi_tugas());
+        holder.txtNamaMapel.setText(currentTugas.getNama_mapel());
+        holder.txtTglBerakhir.setText(currentTugas.getTgl_berakhir());
 
-
-
+        if (mContext instanceof Detail_Tugas) {
+            // Tambahkan logika tampilan attachment di sini sesuai dengan desain yang diinginkan
+            String attachment = currentTugas.getAttachment();
+            // Tampilkan attachment sesuai kebutuhan
+        }
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, tugas.get(holder.getBindingAdapterPosition()).getNama_mapel()+" Selected", Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(mContext, tugas.get(holder.getBindingAdapterPosition()).getId_Tugas()+
+                        " Selected", Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(mContext, Detail_Tugas.class);
+                intent.putExtra("ClassId", currentTugas.getClassId());
+                intent.putExtra("Attachment", currentTugas.getAttachment());
+                intent.putExtra("TaskId", currentTugas.getId_Tugas());
                 mContext.startActivity(intent);
             }
         });
-
     }
 
     @Override

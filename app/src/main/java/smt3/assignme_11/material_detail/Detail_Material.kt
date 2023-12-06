@@ -1,67 +1,70 @@
-package smt3.assignme_11.class_detail
+package smt3.assignme_11.material_detail
 
-import android.content.SharedPreferences
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.RelativeLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.VolleyError
-import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONException
 import org.json.JSONObject
 import smt3.assignme_11.Db_User
 import smt3.assignme_11.R
+import smt3.assignme_11.class_detail.CLass_Detail
+import smt3.assignme_11.class_detail.Materi
+import smt3.assignme_11.class_detail.Tugas
+import smt3.assignme_11.task_detail.TaskAttachmentRecViewAdapter
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class Cd_Material : Fragment() {
-    private lateinit var materialRecView: RecyclerView
-    private lateinit var adapter: MaterialRecViewAdapter
-    private lateinit var sharedPreferences: SharedPreferences
-    private lateinit var materialsArrayList: java.util.ArrayList<Materi>
+class Detail_Material : AppCompatActivity() {
+    private lateinit var backButton : ImageView
+    private lateinit var txtMaterialName: TextView
+    private lateinit var txtMaterialDesc: TextView
+    private lateinit var relativeAttachment: RelativeLayout
+    private lateinit var attachmentTeacherRecView: RecyclerView
+    private lateinit var adapter: MaterialAttachmentRecViewAdapter
+    private lateinit var attachmentArrayList: java.util.ArrayList<Materi>
+    private var materialId: Int = -1
+    private var classId: Int = -1
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_detail_material)
 
-    companion object {
-        fun newInstance(classId: Int): Cd_Material {
-            val fragment = Cd_Material()
-            val args = Bundle()
-            args.putInt("ClassId", classId)
-            fragment.arguments = args
-            Log.d("Cd_Material", "ClassId in newInstance: $classId")
-            return fragment
-        }
-    }
+        materialId = intent.getIntExtra("MaterialId", -1)
+        Log.d("Detail_Tugas", "MaterialId from Intent: $materialId")
+        classId = intent.getIntExtra("ClassId", -1)
+        Log.d("Detail_Tugas", "ClassId from Intent: $classId")
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.fragment_cd__material, container, false)
-        sharedPreferences = requireContext().getSharedPreferences("MyAppName", AppCompatActivity.MODE_PRIVATE)
+        txtMaterialName = findViewById(R.id.txtNamaMateri)
+        txtMaterialDesc = findViewById(R.id.txtDeskripsi)
+        relativeAttachment = findViewById(R.id.RelativeAttachment)
 
+        attachmentTeacherRecView = findViewById<RecyclerView>(R.id.attachment_teacher)
+        attachmentTeacherRecView.layoutManager = LinearLayoutManager(this)
+        adapter = MaterialAttachmentRecViewAdapter(this)
+        attachmentTeacherRecView.adapter = adapter
 
-        materialRecView = view.findViewById<RecyclerView?>(R.id.materialRecView)
-        materialRecView.layoutManager = LinearLayoutManager(requireContext())
-
-        adapter = MaterialRecViewAdapter(requireContext())
-        materialRecView.adapter = adapter
+        backButton = findViewById(R.id.backButton)
+        backButton.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this@Detail_Material, CLass_Detail::class.java)
+            intent.putExtra("ClassId", classId)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+        })
         getMateriData()
-
-        return view
-
     }
 
     fun getMateriData() {
-        val queue: RequestQueue = Volley.newRequestQueue(requireContext())
+        val queue: RequestQueue = Volley.newRequestQueue(this)
         val url = Db_User.urlShowMaterial
 
         val stringRequest: StringRequest = object : StringRequest(
@@ -89,10 +92,8 @@ class Cd_Material : Fragment() {
             }) {
             override fun getParams(): Map<String, String?> {
                 val paramV: MutableMap<String, String?> = HashMap()
-                arguments?.getInt("ClassId")?.let { classId ->
-                    paramV["ClassId"] = classId.toString()
-                    Log.d("Cd_Material Param", "ParamV: $paramV")
-                }
+                    paramV["MaterialId"] = materialId.toString()
+                    Log.d("Detail_Material Param", "ParamV: $paramV")
                 return paramV
             }
         }
@@ -120,26 +121,31 @@ class Cd_Material : Fragment() {
                     materialId,
                     classId,
                     materialName,
-                    "",
+                    materialDesc,
                     formattedDate,
-                    ""
+                    attachment
                 )
                 material.add(materi)
             }
         } catch (e: JSONException) {
             e.printStackTrace()
-            Log.e("Cd_Material parseTask", "Error parsing JSON: ${e.message}")
+            Log.e("Detail_Material parseTask", "Error parsing JSON: ${e.message}")
             // Handle JSON parsing error here
         }
 
         return material
     }
     private fun showMaterial(material: ArrayList<Materi>) {
-        materialsArrayList = ArrayList(material)
-        adapter.setMaterial(materialsArrayList)
+        attachmentArrayList = ArrayList(material)
+        adapter.setMaterial(attachmentArrayList)
         adapter.notifyDataSetChanged()
-        materialRecView.visibility = View.VISIBLE
-        if (materialsArrayList.isEmpty()) {
+        attachmentTeacherRecView.visibility = View.VISIBLE
+        if (attachmentArrayList.isNotEmpty()) {
+            val firstTask = attachmentArrayList[0]
+            txtMaterialName.text = firstTask.nama_Materi
+            txtMaterialDesc.text = firstTask.deskripsi_materi
+        } else {
+            // Handle jika tidak ada tugas
         }
     }
     private fun formatDate(dateStr: String): String {

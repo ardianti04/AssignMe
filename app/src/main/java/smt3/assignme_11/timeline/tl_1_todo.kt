@@ -99,9 +99,11 @@ class tl_1_todo : Fragment() {
             for (i in 0 until userClassesArray.length()) {
                 val taskObj = userClassesArray.getJSONObject(i)
                 val taskId = taskObj.getInt("TaskId")
+                val classId = taskObj.getInt("ClassId")
                 val taskName = taskObj.getString("TaskName")
                 val taskDesc = taskObj.getString("TaskDesc")
                 val dueDateStr  = taskObj.getString("DueDate")
+                val attachment = taskObj.getString("Attachment")
 
                 val formattedDate  = formatDate(dueDateStr)
 
@@ -110,7 +112,9 @@ class tl_1_todo : Fragment() {
                     taskId,
                     taskName,
                     taskDesc,
-                    formattedDate
+                    formattedDate,
+                    classId,
+                    attachment
                 )
                 taskClasses.add(tugas)
             }

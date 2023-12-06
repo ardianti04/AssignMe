@@ -91,6 +91,8 @@
                 android:paddingTop="18dp"
                 android:singleLine="true"
                 android:text="@string/lbl_create_account"
+                android:textColor="@color/navy"
+                android:textStyle="bold"
                 android:textAllCaps="false"
                 style="@style/etRoundedOutlineBlack"/>
         </LinearLayout>

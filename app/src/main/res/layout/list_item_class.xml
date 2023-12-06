@@ -10,7 +10,7 @@
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="20dp"
     app:cardElevation="0dp"
-    android:focusable="false"
+    android:focusable="true"
     android:layout_marginTop="10dp">
 
     <RelativeLayout

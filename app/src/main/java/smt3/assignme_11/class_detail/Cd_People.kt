@@ -19,16 +19,7 @@ import org.json.JSONObject
 import smt3.assignme_11.Db_User
 import smt3.assignme_11.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [Cd_People.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Cd_People : Fragment() {
     private lateinit var teacherRecView: RecyclerView
     private lateinit var studentRecView: RecyclerView

@@ -117,6 +117,8 @@ class Cd_Task : Fragment() {
                 val taskName = classObj.getString("taskName")
                 val taskDesc = classObj.getString("taskDesc")
                 val dueDate = classObj.getString("dueDate")
+                val classId = classObj.getInt("ClassId")
+                val attachment = classObj.getString("attachment")
 
                 val formattedDate  = formatDate(dueDate)
 
@@ -124,7 +126,9 @@ class Cd_Task : Fragment() {
                     taskId,
                     taskName,
                     taskDesc,
-                    formattedDate
+                    formattedDate,
+                    classId,
+                    attachment
                 )
                 tasks.add(tugas)
             }

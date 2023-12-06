@@ -45,8 +45,8 @@ public class ClassRViewAdapter extends RecyclerView.Adapter<ClassRViewAdapter.Vi
         Log.d(TAG, "onBindViewHolder: Called");
         Kelas currentKelas = kelas.get(position);
 
-//        holder.txtNamakelas.setText(currentKelas.getNama_kelas());
-//        holder.txtNamaMapel.setText(currentKelas.getNama_mapel());
+        holder.txtNamakelas.setText(currentKelas.getNama_kelas());
+        holder.txtNamaMapel.setText(currentKelas.getNama_mapel());
 
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override

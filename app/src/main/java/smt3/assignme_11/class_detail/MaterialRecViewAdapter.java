@@ -17,10 +17,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import smt3.assignme_11.R;
+import smt3.assignme_11.material_detail.Detail_Material;
 
 public class MaterialRecViewAdapter extends RecyclerView.Adapter<MaterialRecViewAdapter.ViewHolder>{
     private static final String TAG = "MaterialRecViewAdapter";
-    private ArrayList<Materi> materis=new ArrayList<>();
+    private ArrayList<Materi> materi=new ArrayList<>();
     private Context mContext;
 
     public MaterialRecViewAdapter(Context mContext) {
@@ -37,18 +38,23 @@ public class MaterialRecViewAdapter extends RecyclerView.Adapter<MaterialRecView
     @Override
     public void onBindViewHolder(@NonNull MaterialRecViewAdapter.ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: Called");
-        holder.txtNamaMateri.setText(materis.get(holder.getBindingAdapterPosition()).getNama_Materi());
-        holder.txtTglUpload.setText(materis.get(holder.getBindingAdapterPosition()).getTanggal_upload());
+        Materi currentMateri = materi.get(position);
+
+        holder.txtNamaMateri.setText(materi.get(holder.getBindingAdapterPosition()).getNama_Materi());
+        holder.txtTglUpload.setText(materi.get(holder.getBindingAdapterPosition()).getTanggal_upload());
 
 
 
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, materis.get(holder.getBindingAdapterPosition()).getNama_Materi()+" Selected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, materi.get(holder.getBindingAdapterPosition()).getId_Materi()+
+                        " Selected", Toast.LENGTH_SHORT).show();
 
 
-                Intent intent = new Intent(mContext, Detailed_Material.class);
+                Intent intent = new Intent(mContext, Detail_Material.class);
+                intent.putExtra("ClassId", currentMateri.getClassId());
+                intent.putExtra("MaterialId", currentMateri.getId_Materi());
                 mContext.startActivity(intent);
             }
         });
@@ -57,11 +63,11 @@ public class MaterialRecViewAdapter extends RecyclerView.Adapter<MaterialRecView
 
     @Override
     public int getItemCount() {
-        return materis.size();
+        return materi.size();
     }
 
     public void setMaterial(ArrayList<Materi> materis) {
-        this.materis = materis;
+        this.materi = materis;
         notifyDataSetChanged();
     }
 

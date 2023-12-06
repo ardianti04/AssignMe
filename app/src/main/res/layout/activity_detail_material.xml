@@ -14,12 +14,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-
         <TextView
             android:id="@+id/txtAssignment"
             android:layout_width="wrap_content"
@@ -50,60 +44,46 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        app:layout_constraintStart_toStartOf="@+id/guideline6"
-        app:layout_constraintTop_toBottomOf="@+id/topCLayout"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topCLayout">
 
 
-        <androidx.cardview.widget.CardView
+        <RelativeLayout
+            android:id="@+id/RelativeAttachment"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/cardView1"
             android:layout_marginTop="20dp"
             app:cardCornerRadius="20sp"
-            android:elevation="40sp">
-
+            android:background="@drawable/detail_column">
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
                 <TextView
                     android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Attachments"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"/>
-
+                    android:text="@string/attachments"/>
                 <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/attachment_teacher"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_below="@+id/textView6"/>
             </RelativeLayout>
+        </RelativeLayout>
 
-
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
+        <RelativeLayout
             android:id="@+id/cardView1"
             android:layout_width="350dp"
             android:layout_height="300dp"
-            app:cardCornerRadius="20sp"
-            android:elevation="40sp">
+            android:background="@drawable/detail_column">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -113,12 +93,10 @@
                     android:id="@+id/txtNamaMateri"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Materi Algebra"
-                    android:layout_marginLeft="10dp"
+                    android:text=""
                     android:textColor="@color/navy"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"/>
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
 
                 <View
                     android:id="@+id/garisLurus"
@@ -126,22 +104,20 @@
                     android:layout_height="1dp"
                     android:background="@color/navy"
                     android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
                     android:layout_below="@+id/txtNamaMateri"/>
 
                 <TextView
                     android:id="@+id/txtDeskripsi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Deskripsi (opsional)"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text=""
                     android:textColor="@color/gray_600"
                     android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
                     android:layout_below="@+id/garisLurus"/>
 
             </RelativeLayout>
 
-        </androidx.cardview.widget.CardView>
+        </RelativeLayout>
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

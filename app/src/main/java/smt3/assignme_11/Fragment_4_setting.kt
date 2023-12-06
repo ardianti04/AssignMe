@@ -21,26 +21,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import org.json.JSONException
 import org.json.JSONObject
 
-
-//class SessionManager(private val context: Context) {
-//
-//    private val sharedPreferences: SharedPreferences =
-//        context.getSharedPreferences("user_session", Context.MODE_PRIVATE)
-//    private val editor: SharedPreferences.Editor = sharedPreferences.edit()
-//
-//    fun saveUserEmail(userEmail: String) {
-//        editor.putString("user_email", userEmail)
-//        editor.apply()
-//    }
-//
-//    fun getUserEmail(): String? {
-//        return sharedPreferences.getString("user_email", null)
-//    }
-//}
-
-
-
-
 class Fragment_4_setting : Fragment() {
 
     private lateinit var txtNama: TextView
@@ -48,10 +28,6 @@ class Fragment_4_setting : Fragment() {
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var editProfile: RelativeLayout
 
-//    private lateinit var viewModel: MyViewModel
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     private lateinit var btnLogout: AppCompatButton
 
@@ -81,7 +57,6 @@ class Fragment_4_setting : Fragment() {
             startActivity(intent)
         }
 
-        // Temukan tombol logout
         val btnLogout = view.findViewById<AppCompatButton>(R.id.btnLogOut)
 
         // Tambahkan OnClickListener ke tombol logout
