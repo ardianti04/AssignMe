@@ -107,10 +107,8 @@ class tl_2_completed : Fragment() {
                 val taskObj = userClassesArray.getJSONObject(i)
                 val taskId = taskObj.getInt("TaskId")
                 val taskName = taskObj.getString("TaskName")
-                val taskDesc = taskObj.getString("TaskDesc")
-                val dueDateStr = taskObj.getString("DueDate")
-                val classId = taskObj.getInt("ClassId")
-                val attachment = taskObj.getString("Attachment")
+                val taskDesc = taskObj.getString("ClassName")
+                val dueDateStr  = taskObj.getString("DueDate")
 
                 val formattedDate  = formatDate(dueDateStr)
 
@@ -119,9 +117,9 @@ class tl_2_completed : Fragment() {
                     taskId,
                     taskName,
                     taskDesc,
-                    formattedDate,
-                    classId,
-                    attachment
+                    "",
+                    0,
+                    formattedDate
                 )
                 taskOnTime.add(tugas)
             }
@@ -154,7 +152,7 @@ class tl_2_completed : Fragment() {
                     response?.let {
                         Log.d("Response_Debug", "Raw Response: $response")
                         if (it.isNotEmpty()) {
-                            val taskLate = parseTaskOnTime(it)
+                            val taskLate = parseTaskLate(it)
                             showTaskLateClasses(taskLate)
                         } else {
                             // Handle empty response here
@@ -190,10 +188,8 @@ class tl_2_completed : Fragment() {
                 val taskObj = userClassesArray.getJSONObject(i)
                 val taskId = taskObj.getInt("TaskId")
                 val taskName = taskObj.getString("TaskName")
-                val taskDesc = taskObj.getString("TaskDesc")
-                val dueDateStr = taskObj.getString("DueDate")
-                val classId = taskObj.getInt("ClassId")
-                val attachment = taskObj.getString("Attachment")
+                val taskDesc = taskObj.getString("ClassName")
+                val dueDateStr  = taskObj.getString("DueDate")
 
                 val formattedDate  = formatDate(dueDateStr)
 
@@ -202,9 +198,9 @@ class tl_2_completed : Fragment() {
                     taskId,
                     taskName,
                     taskDesc,
-                    formattedDate,
-                    classId,
-                    attachment
+                    "",
+                    0,
+                    formattedDate
                 )
                 taskLate.add(tugas)
             }

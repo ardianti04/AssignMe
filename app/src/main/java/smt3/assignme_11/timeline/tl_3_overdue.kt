@@ -106,10 +106,8 @@ class tl_3_overdue : Fragment() {
                 val taskObj = userClassesArray.getJSONObject(i)
                 val taskId = taskObj.getInt("TaskId")
                 val taskName = taskObj.getString("TaskName")
-                val taskDesc = taskObj.getString("TaskDesc")
-                val dueDateStr = taskObj.getString("DueDate")
-                val classId = taskObj.getInt("ClassId")
-                val attachment = taskObj.getString("Attachment")
+                val taskDesc = taskObj.getString("ClassName")
+                val dueDateStr  = taskObj.getString("DueDate")
 
                 val formattedDate  = formatDate(dueDateStr)
 
@@ -118,9 +116,9 @@ class tl_3_overdue : Fragment() {
                     taskId,
                     taskName,
                     taskDesc,
-                    formattedDate,
-                    classId,
-                    attachment
+                    "",
+                    0,
+                    formattedDate
                 )
                 taskClasses.add(tugas)
             }
@@ -131,7 +129,6 @@ class tl_3_overdue : Fragment() {
 
         return taskClasses
     }
-
     // Fungsi untuk menampilkan daftar kelas yang telah di-join menggunakan RecyclerView
     private fun showTaskClasses(taskClasses: ArrayList<Tugas>) {
         taskOverdueArrayList = ArrayList(taskClasses)
